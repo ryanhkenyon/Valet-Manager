@@ -23,27 +23,27 @@ const userSchema = new Schema({
 
 });
 
-userSchema.methods = {
+// userSchema.methods = {
 
-    matchPassword: function (password) {
-        return bcrypt.compare(password, this.password);
-    }
+//     matchPassword: function (password) {
+//         return bcrypt.compare(password, this.password);
+//     }
 
-};
+// };
 
-userSchema.pre('save', function (next) {
-    if (this.isModified('password')) {
-        bcrypt.genSalt(saltRounds, (err, salt) => {
-            bcrypt.hash(this.password, salt, (err, hash) => {
-                if (err) { next(err); return }
-                this.password = hash;
-                next();
-            });
-        });
-        return;
-    }
-    next();
-});
+// userSchema.pre('save', function (next) {
+//     if (this.isModified('password')) {
+//         bcrypt.genSalt(saltRounds, (err, salt) => {
+//             bcrypt.hash(this.password, salt, (err, hash) => {
+//                 if (err) { next(err); return }
+//                 this.password = hash;
+//                 next();
+//             });
+//         });
+//         return;
+//     }
+//     next();
+// });
 
 
 module.exports = new Model('User', userSchema);

@@ -1,8 +1,8 @@
 function Login() {
   return (
     <div className="App-login">
-      <form action="/user/login" method="POST">
-      <h3>Login</h3>
+      <form action="/post/register" method="POST">
+      <h3>Register</h3>
         <label>Username</label>
         <br></br>
         <input type="text"></input>

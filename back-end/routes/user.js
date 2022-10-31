@@ -5,12 +5,12 @@ router.get('/get/register', controllers.user.get.register);
 
 router.post('/post/register', controllers.user.post.register);
 
-router.post('/login', controllers.user.post.login);
+// router.post('/login', controllers.user.post.login);
 
-router.post('/logout', controllers.user.post.logout);
+// router.post('/logout', controllers.user.post.logout);
 
-router.put('/:id', controllers.user.put);
+// router.put('/:id', controllers.user.put);
 
-router.delete('/:id', controllers.user.delete);
+// router.delete('/:id', controllers.user.delete);
 
 module.exports = router;
