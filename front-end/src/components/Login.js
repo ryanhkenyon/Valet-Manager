@@ -14,7 +14,7 @@ function Login() {
         <input type="submit" id="login" value="Login"/>
       </form>
       <p>Don't have an account?</p>
-      <a class="btn" href="/register">Register here!</a>
+      <a id="register" className="btn" href="/get/register">Register here!</a>
     </div>
   );
 }

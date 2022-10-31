@@ -5,9 +5,10 @@ const utils = require("../utils");
 module.exports = {
   get: {
     register: (req, res, next) => {
-      models.User.find()
-        .then((users) => res.send(users))
-        .catch(next);
+      
+      // models.User.find()
+      //   .then((users) => res.send(users))
+      //   .catch(next);
     }
   },
 
