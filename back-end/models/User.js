@@ -19,7 +19,7 @@ const userSchema = new Schema({
         
     },
 
-    accounts: [{ type: ObjectId, ref: "Accounts" }]
+    accounts: [{ type: ObjectId, ref: "Account" }]
 
 });
 

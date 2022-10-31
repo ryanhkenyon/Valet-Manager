@@ -5,6 +5,7 @@ const User = require('../models/User')
 
 module.exports = {
   get: {
+    //need to find how to render seperate page to register
     register: (req, res, next) => {
       console.log('u wanna register?')
       // models.User.find()
@@ -14,6 +15,7 @@ module.exports = {
   },
 
   post: {
+    //working succesfully, needs authentication and validation handling
     register: (req, res, next) => {
       const { username, password } = req.body;
       console.log(req.body)
