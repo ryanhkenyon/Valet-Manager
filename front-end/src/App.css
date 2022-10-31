@@ -27,7 +27,7 @@
 .App-login {
   background-color: cadetblue;
   border-radius: 10px;
-  height: 50vh;
+  height: 80vh;
   width: 60vh;
   display: flex;
   flex-direction: column;
