@@ -5,15 +5,13 @@ const User = require('../models/User');
 const Account  = require('../models/Account');
 
 module.exports = {
-//   get: {
+  get: {
     
-//     // register: (req, res, next) => {
-//     //   console.log('u wanna register?')
-//       // models.User.find()
-//       //   .then((users) => res.send(users))
-//       //   .catch(next);
-//     }
-//   },
+    register: (req, res, next) => {
+      console.log('u wanna register?')
+      
+    }
+  },
 
   post: {
     

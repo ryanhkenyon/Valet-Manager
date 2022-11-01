@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     app.use('/', router.user)
 
-    app.use('/account', router.account)
+    app.use('/api/account', router.account)
 
     app.use('/api/user', router.user);
     
