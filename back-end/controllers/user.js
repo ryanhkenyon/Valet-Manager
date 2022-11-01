@@ -1,44 +1,75 @@
+const bcrypt = require("bcrypt");
+const { validationResult } = require("express-validator");
+
 const models = require("../models");
 const config = require("../config/config");
 const utils = require("../utils");
-const User = require('../models/User')
+const User = require("../models/User");
 
 module.exports = {
-  get: {
-    //need to find how to render seperate page to register
-    register: (req, res, next) => {
-      console.log('u wanna register?')
+  register: {
+    //TODO find how to render seperate page to register
+    get: (req, res, next) => {
+      console.log("u wanna register?");
       // models.User.find()
       //   .then((users) => res.send(users))
       //   .catch(next);
-    }
-  },
+    },
 
-  post: {
-    //working succesfully, needs authentication and validation handling
-    register: (req, res, next) => {
+    post: (req, res, next) => {
       const { username, password } = req.body;
-      console.log(req.body)
-      new User({ username, password }).save()
+      //check for errors
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        console.log(errors);
+        return res.json(errors);
+      }
+
+      // //#1 validation
+			// if (body.repeatPassword != body.password) {
+			// 	return res.json({
+			// 		errors:[
+			// 			{
+			// 				value: `${body.repeatPassword}`,
+			// 				msg: 'Passwords must match',
+			// 				param: 'repeatPassword'
+			// 			}
+			// 		]
+					
+			// 	});
+			// }
+
+      new User({ username, password })
+        .save()
         .then((createdUser) => res.send(createdUser))
         .catch(next);
     },
-  }
-  //   login: (req, res, next) => {
-  //     const { username, password } = req.body;
-  //     models.User.findOne({ username })
-  //       .then((user) => Promise.all([user, user.matchPassword(password)]))
-  //       .then(([user, match]) => {
-  //         if (!match) {
-  //           res.status(401).send("Invalid password");
-  //           return;
-  //         }
+  },
 
-  //         const token = utils.jwt.createToken({ id: user._id });
-  //         res.cookie(config.authCookieName, token).send(user);
-  //       })
-  //       .catch(next);
-  //   },
+  login: {
+
+    get:(req, res, next)=>{
+      //TODO render login page?
+      console.log('hey');
+    },
+
+    post: (req, res, next) => {
+      const { username, password } = req.body;
+      models.User.findOne({ username })
+        .then((user) => Promise.all([user, user.matchPassword(password)]))
+        .then(([user, match]) => {
+          if (!match) {
+            res.status(401).send("Invalid password");
+            return;
+          }
+  
+          const token = utils.jwt.createToken({ id: user._id });
+          res.cookie(config.authCookieName, token).send(user);
+        })
+        .catch(next);
+    },
+  },
+
 
   //   logout: (req, res, next) => {
   //     const token = req.cookies[config.authCookieName];

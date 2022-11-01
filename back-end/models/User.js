@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
 const Model = mongoose.model;
@@ -15,21 +16,22 @@ const userSchema = new Schema({
 
     password: {
         type: String,
+        //TODO regex password
         require: true
         
     },
 
-    accounts: [{ type: ObjectId, ref: "Account" }]
+    locations: [{ type: ObjectId, ref: "Location" }]
 
 });
 
-// userSchema.methods = {
+userSchema.methods = {
 
-//     matchPassword: function (password) {
-//         return bcrypt.compare(password, this.password);
-//     }
+    matchPassword: function (password) {
+        return bcrypt.compare(password, this.password);
+    }
 
-// };
+};
 
 // userSchema.pre('save', function (next) {
 //     if (this.isModified('password')) {

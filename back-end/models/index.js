@@ -1,7 +1,9 @@
 const User = require('./User');
-const Account = require('./Account');
+const Location = require('./Location');
+const Valet = require('./Valet');
 
 module.exports = {
     User,
-    Account
+    Location,
+    Valet
 };

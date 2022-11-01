@@ -4,17 +4,18 @@ const Schema = mongoose.Schema;
 const Model = mongoose.model;
 const { String, Number, Boolean, ObjectId } = Schema.Types;
 
-const accountSchema = new Schema({
+const valetSchema = new Schema({
 
-    location: {
+    name: {
         type: String,
         unique: true,
         required: true
     },
 
-    valets: [{ type: ObjectId, ref: "Valet" }]
+    locations: [{ type: ObjectId, ref: "Location" }],
+
+    creatorId: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
 
 });
 
-
-module.exports = new Model('Account', accountSchema);
+module.exports = new Model('Valet', valetSchema);
