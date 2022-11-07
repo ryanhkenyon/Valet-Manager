@@ -1,3 +1,5 @@
+/* Native React CSS */
+
 .App {
   text-align: center;
 }
@@ -50,46 +52,6 @@
   }
 }
 
+/* Custom CSS */
+
 /* Navigation */
-
-
-.Navigation {
-  width: 100%;
-	/* height: 14vh; */
-	background-color: whitesmoke;
-	color: white;
-	position: fixed;
-	top: 0;
-	border-bottom: 20px solid olivedrab;
-}
-
-.navTitle {
-  font-size: 50px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 5px;
-  margin: auto;
-  margin-top: 20px;
-  max-width: 500px;
-  background-color: olivedrab;
-}
-
-.navItem {
-  display: inline-block;
-	height: auto;
-	margin-right: 2%;
-	cursor: pointer;
-	padding: 0.5%;
-	margin: 0.1%;
-	vertical-align: top;
-}
-
-.navLink {
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: olivedrab;
-}
