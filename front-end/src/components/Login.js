@@ -11,6 +11,7 @@ function Login() {
 			<form>
 				<div className="form-control">
 					<label>Email:</label>
+					<br/>
 					<input
 						type="text"
 						value={email}
@@ -23,6 +24,7 @@ function Login() {
 				</div>
 				<div className="form-control">
 					<label>Password:</label>
+					<br/>
 					<input
 						type="password"
 						value={password}

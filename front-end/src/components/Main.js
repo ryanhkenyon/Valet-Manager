@@ -11,13 +11,17 @@ function Main(props) {
         </Link>]
     } else {
         context = [
-            <Link to='/login'>
-                <h1>Login</h1>
-            </Link>,
+            <div className="mainLink">
+                <Link to='/login'>
+                <h3>Login</h3>
+            </Link>
+            </div>,
             <h3>Don't have an account?</h3>,
+            <div className="mainLink">    
             <Link to='/register'>
                 <h2>Register here!</h2>
             </Link>
+            </div>
         ]
     }
 
@@ -25,7 +29,7 @@ function Main(props) {
     return (
         
         //if logged in
-        <div>
+        <div className="Main">
             <h1>Welcome to Valet Manager</h1>
             {context}
         </div>

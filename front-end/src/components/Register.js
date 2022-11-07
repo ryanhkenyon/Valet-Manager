@@ -7,7 +7,7 @@ function Register() {
 
   return (
     <div className="Register">
-        <h3>Register</h3>
+        <h1>Register Account</h1>
       <form action="/post/register" method="POST">
         <label>Username</label>
         <br></br>

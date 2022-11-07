@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Profile(props) {
     return (
-        <div>
+        <div className="Profile">
             <h1>Welcome to your profile!</h1>
             <h2>Here, you can view your Locations and Valets!</h2>
             <Link to="/locations">

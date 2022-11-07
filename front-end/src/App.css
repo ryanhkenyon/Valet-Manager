@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: whitesmoke;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,6 +49,22 @@
     transform: rotate(360deg);
   }
 }
+
+/* Main */
+.Main {
+  background-color: olivedrab;
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 40px;
+}
+
+.mainLink {
+  background-color: whitesmoke;
+  margin: auto;
+  border: 1px solid black;
+  width: 400px;
+}
+
 
 /* Navigation */
 
@@ -92,4 +108,88 @@
   border-radius: 5px;
   padding: 5px;
   background-color: olivedrab;
+}
+
+/* About */ 
+
+.About {
+  background-color: olivedrab;
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 40px;
+  width: 600px
+}
+
+/* Register */
+
+.Register {
+  background-color: olivedrab;
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 40px;
+  width: 800px
+}
+
+/* Login */
+
+.Login {
+  background-color: olivedrab;
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 40px;
+  width: 800px
+}
+
+/* Profile */
+
+.Profile {
+  background-color: olivedrab;
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 40px;
+  width: 800px
+}
+
+/* Locations */
+
+.Locations {
+  background-color: olivedrab;
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 40px;
+  width: 800px
+}
+
+.AddLocation {
+  background-color: olivedrab;
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 40px;
+  width: 800px
+}
+
+/* Valets */
+
+.Valets {
+  background-color: olivedrab;
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 40px;
+  width: 800px
+}
+
+.AddValet {
+  background-color: olivedrab;
+  padding: 30px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 40px;
+  width: 800px
 }
