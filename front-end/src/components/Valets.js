@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ryan from '../images/ryan.png'
 
 function Valets(props) {
     let context = [];
@@ -15,10 +16,71 @@ function Valets(props) {
                 </Link>
             </div>
         ];
+    } else {
+        context = [
+            <div>
+
+            </div>
+        ]
     }
 	return (
         <div className="Valets">
-            {context}
+            <h1>Your Valets</h1>
+            {/* {context} */}
+            <div className="valetItem">
+                <img src={ryan}></img>
+                <div className='valetItemName'>
+                <h5>Ryan Kenyon</h5>
+                <Link to='/view/valet'>
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
+            <div className="valetItem">
+                <img src={ryan}></img>
+                <div className='valetItemName'>
+                <h5>Ryan Kenyon</h5>
+                <Link to='/view/valet'>
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
+            <div className="valetItem">
+                <img src={ryan}></img>
+                <div className='valetItemName'>
+                <h5>Ryan Kenyon</h5>
+                <Link to='/view/valet'>
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
+            <div className="valetItem">
+                <img src={ryan}></img>
+                <div className='valetItemName'>
+                <h5>Ryan Kenyon</h5>
+                <Link to='/view/valet'>
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
+            <div className="valetItem">
+                <img src={ryan}></img>
+                <div className='valetItemName'>
+                <h5>Ryan Kenyon</h5>
+                <Link to='/view/valet'>
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
+            <div className="valetItem">
+                <img src={ryan}></img>
+                <div className='valetItemName'>
+                <h5>Ryan Kenyon</h5>
+                <Link to='/view/valet'>
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
         </div>
     );
 }

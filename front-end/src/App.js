@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Profile from './components/Profile';
 import Locations from './components/Locations';
+import Location from './components/Location';
 import AddLocation from './components/AddLocation';
 import Valets  from './components/Valets';
 import AddValet from './components/AddValet';
@@ -27,7 +28,9 @@ function App() {
         <Route path="/logout" element={<Logout/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/locations" element={<Locations/>}/>
+        <Route path="/view/location" element={<Location/>}/>
         <Route path="/add/location" element={<AddLocation/>}/>
+
         <Route path="/valets" element={<Valets />}/>
         <Route path="/add/valet" element={<AddValet />}/>
         </Routes>
