@@ -12,6 +12,7 @@ import Locations from './components/Locations';
 import Location from './components/Location';
 import AddLocation from './components/AddLocation';
 import Valets  from './components/Valets';
+import Valet  from './components/Valet';
 import AddValet from './components/AddValet';
 
 function App() {
@@ -31,8 +32,8 @@ function App() {
         <Route path="/locations" element={<Locations/>}/>
         <Route path="/view/location" element={<Location/>}/>
         <Route path="/add/location" element={<AddLocation/>}/>
-
         <Route path="/valets" element={<Valets />}/>
+        <Route path="/view/valet" element={<Valet />}/>
         <Route path="/add/valet" element={<AddValet />}/>
         </Routes>
         
