@@ -7,6 +7,7 @@ const { String, Number, Boolean, ObjectId } = Schema.Types;
 const locationSchema = new Schema({
 
     //change this to name?
+    //TODO: set max length around 20
     location: {
         type: String,
         unique: true,

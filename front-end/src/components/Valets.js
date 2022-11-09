@@ -28,59 +28,60 @@ function Valets(props) {
             <h1>Your Valets</h1>
             {/* {context} */}
             <div className="valetItem">
-                <img src={ryan}></img>
+                <img src={ryan} className='valetImg'></img>
                 <div className='valetItemName'>
-                <h5>Ryan Kenyon</h5>
+                <h5>Stephanie Yulisupialous</h5>
                 <Link to='/view/valet'>
                     <h6>Details</h6>
                 </Link>
                 </div>
             </div>
             <div className="valetItem">
-                <img src={ryan}></img>
+                <img src={ryan} className='valetImg'></img>
                 <div className='valetItemName'>
-                <h5>Ryan Kenyon</h5>
+                <h5>Ryan <br/> Kenyon</h5>
                 <Link to='/view/valet'>
                     <h6>Details</h6>
                 </Link>
                 </div>
             </div>
             <div className="valetItem">
-                <img src={ryan}></img>
+                <img src={ryan} className='valetImg'></img>
                 <div className='valetItemName'>
-                <h5>Ryan Kenyon</h5>
+                <h5>Stephanie Yulisupialous</h5>
                 <Link to='/view/valet'>
                     <h6>Details</h6>
                 </Link>
                 </div>
             </div>
             <div className="valetItem">
-                <img src={ryan}></img>
+                <img src={ryan} className='valetImg'></img>
                 <div className='valetItemName'>
-                <h5>Ryan Kenyon</h5>
+                <h5>Ryan <br/> Kenyon</h5>
                 <Link to='/view/valet'>
                     <h6>Details</h6>
                 </Link>
                 </div>
             </div>
             <div className="valetItem">
-                <img src={ryan}></img>
+                <img src={ryan} className='valetImg'></img>
                 <div className='valetItemName'>
-                <h5>Ryan Kenyon</h5>
+                <h5>Stephanie Yulisupialous</h5>
                 <Link to='/view/valet'>
                     <h6>Details</h6>
                 </Link>
                 </div>
             </div>
             <div className="valetItem">
-                <img src={ryan}></img>
+                <img src={ryan} className='valetImg'></img>
                 <div className='valetItemName'>
-                <h5>Ryan Kenyon</h5>
+                <h5>Ryan <br/> Kenyon</h5>
                 <Link to='/view/valet'>
                     <h6>Details</h6>
                 </Link>
                 </div>
             </div>
+            
         </div>
     );
 }

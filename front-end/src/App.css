@@ -166,9 +166,8 @@
   border: 1px solid black;
   border-radius: 40px;
   margin: 10px;
-  width: 400px;
-  height: 450px;
-  padding: 10px;
+  width: 300px;
+  height: 350px;
   padding-top: 40px;
 }
 
@@ -178,6 +177,8 @@
   border-radius: 40px;
   width: 80%;
   margin: auto;
+  margin-top: 10px;
+  position: relative;
 }
 
 .Location {
@@ -190,10 +191,20 @@
 }
 
 .locationImg {
-  background-color: whitesmoke;
-  padding: 30px;
   border: 1px solid black;
   border-radius: 20px;
+  height: 150px;
+  margin-top: -10px;
+}
+
+.locationImg:hover {
+  transform: scale(1.1);
+}
+
+.locationProfileImg {
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 
@@ -234,10 +245,10 @@
   border: 1px solid black;
   border-radius: 40px;
   margin: 10px;
-  width: 400px;
-  height: 550px;
-  padding: 10px;
-  padding-top: 40px;
+  width: 300px;
+  min-height: 350px;
+  max-height: 450px;
+  padding: 15px;
 }
 
 .valetItemName {
@@ -246,4 +257,21 @@
   border-radius: 40px;
   width: 80%;
   margin: auto;
+  margin-top: 10px;
+}
+
+.valetImg {
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 150px
+}
+
+.valetImg:hover {
+  transform: scale(1.1);
+}
+
+.valetProfileImg {
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
