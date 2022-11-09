@@ -1,7 +1,12 @@
 const config = require('./config/config');
 const dbConnection = require('./config/database');
+const bodyParser = require('body-parser');
+const { body } = require('express-validator');
 
 const app = require('express')();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 dbConnection().then(() => {
 

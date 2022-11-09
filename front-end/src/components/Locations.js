@@ -35,6 +35,51 @@ function Locations(props) {
                 </Link>
                 </div>
             </div>
+            <div className="locationItem">
+                <img src={mease}></img>
+                <div className="locationItemName">
+                <h5>Mease Countryside Hospital</h5>
+                <Link to="/view/location">
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
+            <div className="locationItem">
+                <img src={mease}></img>
+                <div className="locationItemName">
+                <h5>Mease Countryside Hospital</h5>
+                <Link to="/view/location">
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
+            <div className="locationItem">
+                <img src={mease}></img>
+                <div className="locationItemName">
+                <h5>Mease Countryside Hospital</h5>
+                <Link to="/view/location">
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
+            <div className="locationItem">
+                <img src={mease}></img>
+                <div className="locationItemName">
+                <h5>Mease Countryside Hospital</h5>
+                <Link to="/view/location">
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
+            <div className="locationItem">
+                <img src={mease}></img>
+                <div className="locationItemName">
+                <h5>Mease Countryside Hospital</h5>
+                <Link to="/view/location">
+                    <h6>Details</h6>
+                </Link>
+                </div>
+            </div>
             
         </div>
     );

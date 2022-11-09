@@ -15,20 +15,6 @@
 
 .App-header {
   background-color: whitesmoke;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-login {
-  background-color: cadetblue;
-  border-radius: 10px;
-  height: 80vh;
-  width: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,33 +27,21 @@
   color: #61dafb;
 }
 
-/* Main */
-.Main {
-  background-color: olivedrab;
-  padding: 30px;
-  border: 1px solid black;
-  border-radius: 40px;
-}
-
-.mainLink {
-  background-color: whitesmoke;
-  margin: auto;
-  border: 1px solid black;
-  width: 400px;
-}
 
 
 /* Navigation */
 
 
 .Navigation {
+  border-top: solid black 10px;
+  border-bottom: solid black 10px;
   width: 100%;
 	/* height: 14vh; */
 	background-color: whitesmoke;
 	color: white;
-	position: fixed;
+	position: absolute;
 	top: 0;
-	border-bottom: 20px solid olivedrab;
+  
 }
 
 .navTitle {
@@ -82,7 +56,7 @@
 }
 
 .navItem {
-  display: inline-block;
+  display: inline;
 	height: auto;
 	cursor: pointer;
 	padding: 0.5%;
@@ -101,48 +75,67 @@
   background-color: olivedrab;
 }
 
+/* Main */
+.Main {
+  background-color: olivedrab;
+  width: 10000px;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
+}
+
+.mainLink {
+  background-color: whitesmoke;
+  margin: auto;
+  border: 1px solid black;
+  width: 400px;
+  margin-bottom: 50px;
+  
+}
+
 /* About */ 
 
 .About {
   background-color: olivedrab;
-  padding: 30px;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 40px;
-  width: 600px
+  width: 100%;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
 }
 
 /* Register */
 
 .Register {
   background-color: olivedrab;
-  padding: 30px;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 40px;
-  width: 800px
+  width: 100%;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
 }
 
 /* Login */
 
 .Login {
   background-color: olivedrab;
-  padding: 30px;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 40px;
-  width: 800px
+  width: 100%;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
 }
 
 /* Profile */
 
 .Profile {
   background-color: olivedrab;
-  padding: 30px;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 40px;
-  width: 800px
+  width: 100%;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
 }
 
 /* -------------------------------------------- */
@@ -151,20 +144,20 @@
 
 .Locations {
   background-color: olivedrab;
-  padding: 30px;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 40px;
   width: 100%;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
 }
 
 .AddLocation {
   background-color: olivedrab;
-  padding: 30px;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 40px;
-  width: 800px
+  width: 100%;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
 }
 
 .locationItem {
@@ -189,11 +182,11 @@
 
 .Location {
   background-color: olivedrab;
-  padding: 30px;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 40px;
   width: 100%;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
 }
 
 .locationImg {
@@ -210,20 +203,20 @@
 
 .Valets {
   background-color: olivedrab;
-  padding: 30px;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 40px;
   width: 100%;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
 }
 
 .AddValet {
   background-color: olivedrab;
-  padding: 30px;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 40px;
-  width: 800px
+  width: 100%;
+  border: solid black 10px;
+  margin-top: 200px;
+  position: relative;
+  min-height: 800px;
 }
 
 .valetItem {

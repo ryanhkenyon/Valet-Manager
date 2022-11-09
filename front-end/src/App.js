@@ -18,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <Navigation/>
+      <span className="navFix"></span>
       <header className="App-header">
         
         <Routes>

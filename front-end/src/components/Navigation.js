@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 function Navigation(props) {
-  let loggedIn = props.loggedIn;
+  let loggedIn = true;
   let navItems = [];
   if (loggedIn) {
     navItems = [
