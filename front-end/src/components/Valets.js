@@ -30,7 +30,7 @@ function Valets(props) {
             <div className="valetItem">
                 <img src={ryan} className='valetImg'></img>
                 <div className='valetItemName'>
-                <h5>Stephanie Yulisupialous</h5>
+                <h5>Stephanie <br/>Yulisupialous</h5>
                 <Link to='/view/valet'>
                     <h6>Details</h6>
                 </Link>
@@ -48,7 +48,7 @@ function Valets(props) {
             <div className="valetItem">
                 <img src={ryan} className='valetImg'></img>
                 <div className='valetItemName'>
-                <h5>Stephanie Yulisupialous</h5>
+                <h5>Stephanie <br/>Yulisupialous</h5>
                 <Link to='/view/valet'>
                     <h6>Details</h6>
                 </Link>
@@ -66,7 +66,7 @@ function Valets(props) {
             <div className="valetItem">
                 <img src={ryan} className='valetImg'></img>
                 <div className='valetItemName'>
-                <h5>Stephanie Yulisupialous</h5>
+                <h5>Stephanie <br/>Yulisupialous</h5>
                 <Link to='/view/valet'>
                     <h6>Details</h6>
                 </Link>
@@ -81,7 +81,6 @@ function Valets(props) {
                 </Link>
                 </div>
             </div>
-            
         </div>
     );
 }

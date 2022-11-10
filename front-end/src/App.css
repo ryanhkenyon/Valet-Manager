@@ -275,3 +275,9 @@
   border: 1px solid black;
   border-radius: 10px;
 }
+
+#test {
+  border: 1px solid black;
+  width: 500px;
+  margin:auto;
+}

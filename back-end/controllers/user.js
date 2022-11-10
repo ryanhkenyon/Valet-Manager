@@ -72,7 +72,7 @@ module.exports = {
             .then((result) => {
               //TODO render login page!!! or else we're stuck sending request.
               // res.status(302).redirect('/');
-            });
+            }).catch(next);
         });
       });
     },
