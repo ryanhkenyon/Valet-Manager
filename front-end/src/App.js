@@ -3,6 +3,7 @@ import './App.css';
 import {Routes,Route} from "react-router-dom";
 import Main from "./components/Main";
 import Navigation from "./components/Navigation";
+import Footer from './components/Footer';
 import Register from './components/Register';
 import About from './components/About';
 import Login from './components/Login';
@@ -15,7 +16,10 @@ import Valets  from './components/Valets';
 import Valet  from './components/Valet';
 import AddValet from './components/AddValet';
 
+import { useState } from 'react';
+
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
   return (
     <div className="App">
       <Navigation/>
@@ -39,6 +43,7 @@ function App() {
         
         
       </header>
+      <Footer/>
     </div>
   );
 }

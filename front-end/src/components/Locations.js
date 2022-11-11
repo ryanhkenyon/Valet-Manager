@@ -25,7 +25,9 @@ function Locations(props) {
   }
   return (
     <div className="Locations">
+      <div className="pageTitle">
       <h1>Your Locations</h1>
+      </div>
       {/* {context} */}
       {/* here are fake locations to test display */}
       <div className="locationItem">
