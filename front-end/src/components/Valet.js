@@ -16,13 +16,13 @@ function Valet(props) {
                     <option>Shephards</option>
                 </select>
                 <br/>
-                <button>Add Valet</button>
+                <button>Assign Location To Valet</button>
             <div className='valetLocations'>
                 {/* TODO: enter locations associated with valet */}
                 <div className="locationItem">
                 <img src={bigMease} className="locationImg"></img>
                 <div className='locationItemName'>
-                <h5>Mease Countryside Hospital</h5>
+                <h5>Mease Hospital</h5>
                 <Link to='/view/location'>
                     <h6>Details</h6>
                 </Link>

@@ -13,6 +13,17 @@ const locationSchema = new Schema({
         unique: true,
         required: true
     },
+
+    address: {
+        type: String,
+        unique: true,
+        required: true
+    },
+
+    image: {
+        data:Buffer,
+        contentType: String
+    },
     //add address and maybe other things
 
     valets: [{ type: ObjectId, ref: "Valet" }],

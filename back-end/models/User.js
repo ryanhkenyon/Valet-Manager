@@ -21,7 +21,14 @@ const userSchema = new Schema({
         
     },
 
-    locations: [{ type: ObjectId, ref: "Location" }]
+    rePassword: {
+        type: String,
+        require: true
+    },
+
+    locations: [{ type: ObjectId, ref: "Location" }],
+
+    valets: [{ type: ObjectId, ref: "Valet" }]
 
 });
 

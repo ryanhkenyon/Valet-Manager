@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import mease from "../images/mease.png";
+import bigMease from "../images/bigMease.jpg";
 
 function Locations(props) {
   let context = [];
@@ -29,7 +29,7 @@ function Locations(props) {
       {/* {context} */}
       {/* here are fake locations to test display */}
       <div className="locationItem">
-        <img src={mease} className="locationImg"></img>
+        <img src={bigMease} className="locationImg"></img>
         <div className="locationItemName">
           <h5>Mease Hospital</h5>
           <Link to="/view/location">
@@ -38,7 +38,7 @@ function Locations(props) {
         </div>
       </div>
       <div className="locationItem">
-        <img src={mease} className="locationImg"></img>
+        <img src={bigMease} className="locationImg"></img>
         <div className="locationItemName">
           <h5>Mease Hospital</h5>
           <Link to="/view/location">
@@ -47,7 +47,7 @@ function Locations(props) {
         </div>
       </div>
       <div className="locationItem">
-        <img src={mease} className="locationImg"></img>
+        <img src={bigMease} className="locationImg"></img>
         <div className="locationItemName">
           <h5>Mease Hospital</h5>
           <Link to="/view/location">
@@ -56,7 +56,7 @@ function Locations(props) {
         </div>
       </div>
       <div className="locationItem">
-        <img src={mease} className="locationImg"></img>
+        <img src={bigMease} className="locationImg"></img>
         <div className="locationItemName">
           <h5>Mease Hospital</h5>
           <Link to="/view/location">
@@ -65,7 +65,7 @@ function Locations(props) {
         </div>
       </div>
       <div className="locationItem">
-        <img src={mease} className="locationImg"></img>
+        <img src={bigMease} className="locationImg"></img>
         <div className="locationItemName">
           <h5>Mease Hospital</h5>
           <Link to="/view/location">
@@ -74,7 +74,7 @@ function Locations(props) {
         </div>
       </div>
       <div className="locationItem">
-        <img src={mease} className="locationImg"></img>
+        <img src={bigMease} className="locationImg"></img>
         <div className="locationItemName">
           <h5>Mease Hospital</h5>
           <Link to="/view/location">

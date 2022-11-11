@@ -9,13 +9,15 @@ function Location(props) {
             <h1>Mease Countryside Hospital</h1>
             <img className='locationProfileImg' src={bigMease}/>
             <h5>1840 Mease Drive, Safety Harbor, FL</h5>
-
+            <div id='test'>
+            <h3>Add Valets to this Location</h3>
                 <select className='valetSelectionLocation'>
                     <option>Ryan Kenyon</option>
                     <option>Stephanie Yulisupialous</option>
                 </select>
                 <br/>
-                <button>Add Location</button>
+                <button>Add Valet To Location</button>
+            </div>
             <div className='locationValets'>
 
                 {/* TODO: enter valets associated with location */}

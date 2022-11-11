@@ -19,7 +19,7 @@ module.exports = {
     },
 
     post: (req, res, next) => {
-      const { username, password } = req.body;
+      const { username, password, rePassword } = req.body;
       //check for errors
       const errors = validationResult(req);
 
@@ -29,18 +29,18 @@ module.exports = {
       }
 
       // //#1 validation. check if passwords match in register field
-      // if (body.repeatPassword != body.password) {
-      // 	return res.json({
-      // 		errors:[
-      // 			{
-      // 				value: `${body.repeatPassword}`,
-      // 				msg: 'Passwords must match',
-      // 				param: 'repeatPassword'
-      // 			}
-      // 		]
+      if (password != rePassword) {
+      	return res.json({
+      		errors:[
+      			{
+      				value: `${rePassword}`,
+      				msg: 'Passwords must match',
+      				param: 'repeatPassword'
+      			}
+      		]
 
-      // 	});
-      // }
+      	});
+      }
 
       //#2 validation. Check if username exists already
       User.find({ username })

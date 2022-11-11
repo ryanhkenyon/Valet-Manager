@@ -198,7 +198,7 @@
 }
 
 .locationImg:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .locationProfileImg {
@@ -276,8 +276,19 @@
   border-radius: 10px;
 }
 
+/* id attributes cause class wouldn't work */
 #test {
   border: 1px solid black;
   width: 500px;
   margin:auto;
+  padding-bottom: 20px;
+  background-color: ;
+}
+
+#fileUpload {
+  color: transparent;
+}
+
+#fileUploadLabel {
+  margin-left: 75px;
 }

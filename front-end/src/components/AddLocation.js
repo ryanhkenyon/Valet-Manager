@@ -8,7 +8,17 @@ function AddLocation() {
                     <input
                         type="text"
                         name="locationName"
-                        />
+                        required/>
+                        <br/>
+                        <label>Address</label>
+                        <input
+                        type="text"
+                        name="locationName"
+                        required/>
+                        <br/>
+                        <label id="fileUploadLabel">Image: </label>
+                         <input type="file" id="fileUpload" 
+                       name="image" title="hello" required/>
                 </div>
                 <div className="form-control">
 					<button type="submit">Add Location</button>
