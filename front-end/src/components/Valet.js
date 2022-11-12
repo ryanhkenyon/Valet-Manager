@@ -6,17 +6,24 @@ function Valet(props) {
 
     return (
         <div className="Valet">
+            <div className="pageTitle">
             <h1>Ryan Kenyon</h1>
+            </div>
             <img className='valetProfileImg' src={ryan} alt="valet"/>
-            <h5>I'm this guy</h5>
-            
-            <h3 id="test">Add Valets to this Location</h3>
+            <h5 className="black">Minor details here</h5>
+            <div id="test">
+
+            <h3>Add Valets to this Location</h3>
             <select className='valetSelectionLocation'>
                     <option>Mease Hospital</option>
                     <option>Shephards</option>
                 </select>
                 <br/>
                 <button>Assign Location To Valet</button>
+            </div>
+            <div className="pageTitle">
+                <h3>Locations for Ryan Kenyon</h3>
+            </div>
             <div className='valetLocations'>
                 {/* TODO: enter locations associated with valet */}
                 <div className="locationItem">
