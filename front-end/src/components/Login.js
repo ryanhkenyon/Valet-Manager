@@ -7,9 +7,11 @@ function Login() {
 
 	return (
 		<div className="Login">
+			<div className="pageTitle">
 			<h1>Login Page</h1>
-			<form>
-				<div className="form-control">
+			</div>
+			<form className="form-control">
+				<div>
 					<label>Email:</label>
 					<br/>
 					<input
@@ -22,7 +24,7 @@ function Login() {
 						}}
 					/>
 				</div>
-				<div className="form-control">
+				<div >
 					<label>Password:</label>
 					<br/>
 					<input
@@ -35,7 +37,7 @@ function Login() {
 						}}
 					/>
 				</div>
-				<div className="form-control">
+				<div>
 					<button type="submit">Login</button>
 				</div>
 			</form>

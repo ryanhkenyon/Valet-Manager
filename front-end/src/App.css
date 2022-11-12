@@ -159,21 +159,21 @@
 /* Register */
 
 .Register {
-  background-color: olivedrab;
-  width: 100%;
-  margin-top: 178px;
+  background-color: whitesmoke;
+  width: 700px;
+  margin-top: 200px;
   position: relative;
-  min-height: 800px;
+  min-height: 1000px;
 }
 
 /* Login */
 
 .Login {
-  background-color: olivedrab;
-  width: 100%;
-  margin-top: 178px;
+  background-color: whitesmoke;
+  width: 600px;
+  margin-top: 200px;
   position: relative;
-  min-height: 800px;
+  min-height: 1000px;
 }
 
 /* Profile */

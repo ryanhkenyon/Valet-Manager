@@ -1,20 +1,24 @@
-import { useState } from "react";
 
-function Register() {
+import React, { useState } from "react";
+
+const Register = ({createUser}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
 
   return (
     <div className="Register">
+      <div className="pageTitle">
         <h1>Register Account</h1>
-      <form action="/post/register" method="POST">
+      </div>
+      <form className="form-control">
         <label>Username</label>
-        <br></br>
+        <br/>
         <input
           type="text"
           value={email}
           name="email"
+          placeholder="Username"
           onChange={(e) => {
             setEmail(e.target.value);
           }}
@@ -26,6 +30,7 @@ function Register() {
           type="text"
           value={password}
           name="password"
+          placeholder="Password"
           onChange={(e) => {
             //console.log(e.target.value);
             setPassword(e.target.value);
@@ -38,12 +43,13 @@ function Register() {
           type="text"
           value={rePassword}
           name="rePassword"
+          placeholder="Repeat Password"
           onChange={(e) => {
             //console.log(e.target.value);
             setRePassword(e.target.value);
           }}
         />
-        <div className="form-control">
+        <div>
 					<button type="submit">Register</button>
 				</div>
       </form>
