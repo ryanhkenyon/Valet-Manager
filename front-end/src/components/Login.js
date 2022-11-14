@@ -1,26 +1,41 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import services from "../services";
 //todd: add in the login service
-function Login() {
-	const [email, setEmail] = useState("");
+function Login(props) {
+	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+
+	function submitHandler(event) {
+		event.preventDefault();
+		services.userLogin({
+			username,
+			password
+		}).then((data)=>{
+			console.log(data);
+			props.setCookie(data.cookie.name, data.cookie.token, {path: '/'});
+			props.setLoggedIn(true);
+			props.setUserId(data._id);
+			// <Navigate to='/' replace={true}/>
+		}).catch(error=>console.log(error));
+	}
 
 	return (
 		<div className="Login">
 			<div className="pageTitle">
 			<h1>Login Page</h1>
 			</div>
-			<form className="form-control">
+			<form className="form-control" onSubmit={submitHandler}>
 				<div>
-					<label>Email:</label>
+					<label>Username:</label>
 					<br/>
 					<input
 						type="text"
-						value={email}
-						name="email"
+						value={username}
+						name="username"
 						onChange={(e) => {
-							//console.log(e.target.value);
-							setEmail(e.target.value);
+							setUsername(e.target.value);
 						}}
 					/>
 				</div>
@@ -32,7 +47,6 @@ function Login() {
 						value={password}
 						name="password"
 						onChange={(e) => {
-							//console.log(e.target.value);
 							setPassword(e.target.value);
 						}}
 					/>

@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
 import {Routes,Route} from "react-router-dom";
+import {useCookies} from 'react-cookie';
+import {useEffect} from 'react';
 import Main from "./components/Main";
 import Navigation from "./components/Navigation";
 import Footer from './components/Footer';
@@ -18,27 +20,29 @@ import AddValet from './components/AddValet';
 
 import { useState } from 'react';
 
-function App() {
+function App(props) {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [cookies,setCookie] = useCookies([]);
   return (
     <div className="App">
-      <Navigation/>
+      <Navigation loggedIn = {loggedIn} />
       <span className="navFix"></span>
       <header className="App-header">
         
         <Routes>
-        <Route path="/" element={<Main/>}/>
-        <Route path="/about" element={<About/>}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/logout" element={<Logout/>}/>
-        <Route path="/profile" element={<Profile/>}/>
-        <Route path="/locations" element={<Locations/>}/>
-        <Route path="/view/location" element={<Location/>}/>
-        <Route path="/add/location" element={<AddLocation/>}/>
-        <Route path="/valets" element={<Valets />}/>
-        <Route path="/view/valet" element={<Valet />}/>
-        <Route path="/add/valet" element={<AddValet />}/>
+        <Route path="/"  element={<Main loggedIn = {loggedIn}/>}/>
+        <Route path="/about"  element={<About/>}/>
+        <Route path="/register"  element={<Register loggedIn = {loggedIn}/>}/>
+        <Route path="/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCookie={setCookie} setUserId={setUserId} />}/>
+        <Route path="/logout"  element={<Logout loggedIn = {loggedIn}/>}/>
+        <Route path="/profile"  element={<Profile loggedIn = {loggedIn}/>}/>
+        <Route path="/locations"  element={<Locations loggedIn = {loggedIn}/>}/>
+        <Route path="/view/location"  element={<Location loggedIn = {loggedIn}/>}/>
+        <Route path="/add/location"  element={<AddLocation loggedIn = {loggedIn}/>}/>
+        <Route path="/valets"  element={<Valets loggedIn = {loggedIn}/>}/>
+        <Route path="/view/valet"  element={<Valet loggedIn = {loggedIn}/>}/>
+        <Route path="/add/valet"  element={<AddValet  loggedIn = {loggedIn}/>}/>
         </Routes>
         
         

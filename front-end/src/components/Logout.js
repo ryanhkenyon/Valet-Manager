@@ -1,6 +1,6 @@
 import Main from './Main';
 
-function Logout() {
+function Logout(props) {
     return (
         <div>
             <Main/>

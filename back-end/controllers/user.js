@@ -30,16 +30,15 @@ module.exports = {
 
       // //#1 validation. check if passwords match in register field
       if (password != rePassword) {
-      	return res.json({
-      		errors:[
-      			{
-      				value: `${rePassword}`,
-      				msg: 'Passwords must match',
-      				param: 'repeatPassword'
-      			}
-      		]
-
-      	});
+        return res.json({
+          errors: [
+            {
+              value: `${rePassword}`,
+              msg: "Passwords must match",
+              param: "repeatPassword",
+            },
+          ],
+        });
       }
 
       //#2 validation. Check if username exists already
@@ -72,7 +71,8 @@ module.exports = {
             .then((result) => {
               //TODO render login page!!! or else we're stuck sending request.
               // res.status(302).redirect('/');
-            }).catch(next);
+            })
+            .catch(next);
         });
       });
     },
@@ -86,6 +86,7 @@ module.exports = {
 
     post: (req, res, next) => {
       const { username, password } = req.body;
+      console.log(req)
       models.User.findOne({ username })
         .then((user) => {
           Promise.all([user, user.matchPassword(password)]).then(
@@ -96,24 +97,36 @@ module.exports = {
               }
 
               const token = utils.jwt.createToken({ id: user._id });
-              res.cookie(config.authCookieName, token).send(user);
+              res.header(
+                  "Access-Control-Allow-Headers",
+                  "Origin, X-Requested-With, Content-Type, Accept"
+                )
+                .cookie(config.authCookieName, token)
+                .send({
+                  id: user._id,
+                  cookie: {
+                    name: config.authCookieName,
+                    token,
+                  },
+                });
             }
           );
-        }).catch(next);
+        })
+        .catch(next);
     },
   },
 
-  //   logout: (req, res, next) => {
-  //     const token = req.cookies[config.authCookieName];
-  //     console.log("-".repeat(100));
-  //     console.log(token);
-  //     console.log("-".repeat(100));
-  //     models.TokenBlacklist.create({ token })
-  //       .then(() => {
-  //         res.clearCookie(config.authCookieName).send("Logout successfully!");
-  //       })
-  //       .catch(next);
-  //   },
+  logout: (req, res, next) => {
+    const token = req.cookies[config.authCookieName];
+    console.log("-".repeat(100));
+    console.log(token);
+    console.log("-".repeat(100));
+    models.TokenBlacklist.create({ token })
+      .then(() => {
+        res.clearCookie(config.authCookieName).send("Logout successfully!");
+      })
+      .catch(next);
+  },
   // },
 
   // put: (req, res, next) => {

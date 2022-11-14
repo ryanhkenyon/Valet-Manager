@@ -10,7 +10,7 @@ module.exports = {
   },
 
   post: (req, res, next) => {
-    console.log('hello?')
+    console.log(req.cookies)
     const valet = req.body;
     new Valet(valet)
       .save()
