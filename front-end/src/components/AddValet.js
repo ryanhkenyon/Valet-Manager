@@ -18,8 +18,8 @@ const AddValet = () => {
             <div className='pageTitle'>
             <h1>Add a Valet</h1>
             </div>
-            <form>
-            <div className="form-control" onSubmit={submitHandler}>
+            <form className="form-control" onSubmit={submitHandler}>
+            <div>
                     <label>Name: </label>
                     <br/>
                     <input
