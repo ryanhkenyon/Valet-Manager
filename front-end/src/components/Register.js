@@ -1,26 +1,50 @@
-
+import services from "../services";
 import React, { useState } from "react";
 
 const Register = ({createUser}) => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
-
+  function submitHandler(event) {
+		event.preventDefault();
+		let hasError = false;
+		if(username.length == 0) {
+			//error
+			console.log('no username');
+			hasError = true;
+		}
+		if(password.length == 0) {
+			//error
+			console.log('no password');
+			hasError = true;
+		}
+		if(!hasError) {
+			services.userRegister({
+				username,
+				password,
+				rePassword
+			}).then((data)=>{
+				console.log('!!!!' + username, password, rePassword);
+			});
+		} else {
+			console.log("There was an error, fix and try again");
+		}
+	}
   return (
     <div className="Register">
       <div className="pageTitle">
         <h1>Register Account</h1>
       </div>
-      <form className="form-control">
+      <form className="form-control" onSubmit={submitHandler}>
         <label>Username</label>
         <br/>
         <input
           type="text"
-          value={email}
+          value={username}
           name="email"
           placeholder="Username"
           onChange={(e) => {
-            setEmail(e.target.value);
+            setUsername(e.target.value);
           }}
         />
         <br />
