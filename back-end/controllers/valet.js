@@ -10,6 +10,7 @@ module.exports = {
   },
 
   post: (req, res, next) => {
+    console.log('hello?')
     const valet = req.body;
     new Valet(valet)
       .save()
