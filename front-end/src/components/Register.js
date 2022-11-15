@@ -33,11 +33,11 @@ const Register = (props) => {
 				password,
 				rePassword
 			}).then((data)=>{
-				console.log(data.id);
+				console.log(data);
         if (data.id) {
-          navigate('/login');
         } else {
-          console.log('user creation was not successful')
+          navigate('/login');
+          
         }
 			}).catch((error) => console.log(error));
 		} else {
