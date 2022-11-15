@@ -1,7 +1,6 @@
 import addValet from "./addValet";
 import userRegister from "./userRegister";
 import addLocation from './addLocation';
-import getLocation from './getLocation';
 import getAllLocations from './getAllLocations';
 import getUserLocation from "./getUserLocation";
 import getUser from "./getUser";
@@ -12,7 +11,6 @@ const services = {
     getUser,
     addValet,
     addLocation,
-    getLocation,
     getAllLocations,
     getUserLocation
 

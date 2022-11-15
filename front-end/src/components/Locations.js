@@ -8,15 +8,16 @@ import LocationDiv from "./LocationDiv";
 function Locations(props) {
   let context = [];
   const [locations, setLocations] = useState([]);
+  console.log('benus')
 
 
-  function runFetch() {
     services.getUserLocation({
         id: props.userId
     }).then((data)=>{
         services.getUser({
             id:props.userId
         }).then((user)=>{
+          console.log(data, user);
             data = data.map(item=>{
                 item.author = user.username;
       return item;
@@ -29,12 +30,12 @@ function Locations(props) {
     }
         })
     })
-}
 
-useEffect(() => {
-  console.log("searched");
-  runFetch();
-}, []);
+
+// useEffect(() => {
+//   console.log("searched");
+//   runFetch();
+// }, []);
 
 const locationsArray = locations.map((location,index) => {
 return (
@@ -72,15 +73,14 @@ return (
       </div>,
     ];
   } else {
-    context = [];
+    context = [{locationsArray}];
   }
   return (
     <div className="Locations">
       <div className="pageTitle">
       <h1>Your Locations</h1>
       </div>
-      {/* {context} */}
-      {locationsArray}
+      {context}
     </div>
   );
 }
