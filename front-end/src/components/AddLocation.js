@@ -1,18 +1,32 @@
 import services from "../services";
 import React, {useState} from 'react';
+import { Navigate , useNavigate} from 'react-router-dom'; 
 
-function AddLocation() {
-
+function AddLocation(props) {
+    console.log('hello',props.loggedIn)
     const [location, setLocation] = useState('');
     const [address, setAddress] = useState('');
+    const navigate = useNavigate();
+    if(!props.loggedIn) {
+        return <Navigate to='/login' replace={true}/>
+    }
 
+    
     function submitHandler(event) {
         event.preventDefault();
+
+        console.log(props)
+        //if location or adddress are empty
+
         services.addLocation({
             location,
-            address
+            address,
+            creatorId: props.userId
         }).then((data)=>{
+            setLocation('');
+            setAddress('');
             console.log(data);
+            return navigate('/locations')
         });
     }
 

@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import ryan from "../images/ryan.png";
 
+import { Navigate } from 'react-router-dom'; 
+
 function Valets(props) {
   let context = [];
+  if(!props.loggedIn) {
+    return <Navigate to='/login' replace={true}/>
+}
   if (
     props.children === [] ||
     props.children === null ||

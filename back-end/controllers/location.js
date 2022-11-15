@@ -6,8 +6,9 @@ const Location = require("../models/Location");
 
 module.exports = {
   get: (req, res, next) => {
-    //TODO render create account page?? might not be necessary
-    console.log('hey');
+    models.Location.find()
+            .then((location) => res.send(location))
+            .catch(next);
   },
 
   post: (req, res, next) => {

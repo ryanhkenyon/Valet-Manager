@@ -8,11 +8,13 @@ let options = {
 };
 
 export default async function userRegister(data) {
+    console.log(data)
     options.body = JSON.stringify(data);
-    try {
-        const response = await fetch(url, options);
-        return await response.json();
-    } catch (error) {
+    return fetch(url,options)
+    .then(response => {
+        return response.json() 
+    }).catch(error=>{
+        console.log(error)
         return error;
-    }
+    })
 }

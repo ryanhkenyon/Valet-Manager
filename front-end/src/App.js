@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import {Routes,Route} from "react-router-dom";
+import {Routes,Route, Link, useParams, Navigate, Outlet} from "react-router-dom";
 import {useCookies} from 'react-cookie';
 import {useEffect} from 'react';
 import Main from "./components/Main";
@@ -21,12 +21,14 @@ import AddValet from './components/AddValet';
 import { useState } from 'react';
 
 function App(props) {
-  const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState('');
-  const [cookies,setCookie] = useCookies([]);
+  const [cookies,setCookie, removeCookie] = useCookies(['x-auth-token']);
+  const [loggedIn, setLoggedIn] = useState(cookies['x-auth-token']?true:false);
+  console.log(cookies['x-auth-token']);
+  console.log(loggedIn)
   return (
     <div className="App">
-      <Navigation loggedIn = {loggedIn} />
+      <Navigation loggedIn = {loggedIn} removeCookie={removeCookie} setLoggedIn={setLoggedIn}/>
       <span className="navFix"></span>
       <header className="App-header">
         
@@ -39,10 +41,10 @@ function App(props) {
         <Route path="/profile"  element={<Profile loggedIn = {loggedIn}/>}/>
         <Route path="/locations"  element={<Locations loggedIn = {loggedIn}/>}/>
         <Route path="/view/location"  element={<Location loggedIn = {loggedIn}/>}/>
-        <Route path="/add/location"  element={<AddLocation loggedIn = {loggedIn}/>}/>
+        <Route path="/add/location"  element={<AddLocation loggedIn = {loggedIn} userId={userId}/>}/>
         <Route path="/valets"  element={<Valets loggedIn = {loggedIn}/>}/>
         <Route path="/view/valet"  element={<Valet loggedIn = {loggedIn}/>}/>
-        <Route path="/add/valet"  element={<AddValet  loggedIn = {loggedIn}/>}/>
+        <Route path="/add/valet"  element={<AddValet  loggedIn = {loggedIn} userId={userId}/>}/>
         </Routes>
         
         

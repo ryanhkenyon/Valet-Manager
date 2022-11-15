@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import bigMease from "../images/bigMease.jpg";
+import { Navigate } from 'react-router-dom';
+import services from "../services";
 
 function Locations(props) {
   let context = [];
+
+  if(!props.loggedIn) {
+    return <Navigate to='/login' replace={true}/>
+}
+
   if (
     props.children === [] ||
     props.children === null ||

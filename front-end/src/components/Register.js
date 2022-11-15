@@ -1,10 +1,15 @@
 import services from "../services";
 import React, { useState } from "react";
-
-const Register = ({createUser}) => {
+import { Navigate, useNavigate } from "react-router-dom";
+const Register = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const navigate = useNavigate();
+  if(props.loggedIn) {
+    return <Navigate to='/profile' replace={true}/>
+  }
+
   function submitHandler(event) {
 		event.preventDefault();
 		let hasError = false;
@@ -18,14 +23,23 @@ const Register = ({createUser}) => {
 			console.log('no password');
 			hasError = true;
 		}
+    if(password !== rePassword) {
+      console.log('passwords must match!')
+      hasError = true;
+    }
 		if(!hasError) {
 			services.userRegister({
 				username,
 				password,
 				rePassword
 			}).then((data)=>{
-				console.log('!!!!' + username, password, rePassword);
-			});
+				console.log(data.id);
+        if (data.id) {
+          navigate('/login');
+        } else {
+          console.log('user creation was not successful')
+        }
+			}).catch((error) => console.log(error));
 		} else {
 			console.log("There was an error, fix and try again");
 		}

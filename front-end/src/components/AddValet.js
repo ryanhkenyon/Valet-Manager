@@ -1,16 +1,32 @@
 import services from "../services";
 import React, { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom'; 
 
-const AddValet = () => {
+const AddValet = (props) => {
 
     const [name, setValet] = useState('');
+    const navigate = useNavigate();
+
+    if(!props.loggedIn) {
+        return <Navigate to='/login' replace={true}/>
+    }
+
 
     function submitHandler(event) {
         event.preventDefault();
+
+
+        //need to validate
+
+
+        console.log(props)
+
         services.addValet({
-            name
+            name,
+            creatorId: props.userId
         }).then((data)=>{
-            console.log('something worked?')
+            setValet('');
+            return navigate('/valets')
         })
     }
     return (

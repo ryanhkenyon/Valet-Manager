@@ -21,6 +21,8 @@ module.exports = {
     post: (req, res, next) => {
       const { username, password, rePassword } = req.body;
       //check for errors
+
+      
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
@@ -68,9 +70,8 @@ module.exports = {
             password,
           })
             .save()
-            .then((result) => {
-              //TODO render login page!!! or else we're stuck sending request.
-              // res.status(302).redirect('/');
+            .then((newUser) => {
+              res.send(newUser)
             })
             .catch(next);
         });

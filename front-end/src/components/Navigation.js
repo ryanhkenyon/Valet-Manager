@@ -1,8 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 function Navigation(props) {
-  let loggedIn = true;
+  let loggedIn = props.loggedIn;
   let navItems = [];
+  function clickHandler(event) {
+    console.log(window.location);
+      props.setLoggedIn(false);
+      props.removeCookie('x-auth-token',{path:'/'});
+      return <Navigate to='/login' replace={true}/>
+  }
+
   if (loggedIn) {
     navItems = [
     	<li className="navItem">
@@ -18,7 +25,7 @@ function Navigation(props) {
 		<Link to="add/valet" className="navLink">Add Valet</Link>
 	</li>,
     	<li className="navItem">
-		<Link to="logout" className="navLink">Logout</Link>
+		<Link className="navLink" onClick={clickHandler}>Logout</Link>
 	</li>
     ];
   } else {
@@ -32,14 +39,7 @@ function Navigation(props) {
         <Link to="/login" className="navLink">
           Login
         </Link>
-      </li>,
-
-      //take this out later cuz we're not logged in yet
-      <li className="navItem">
-        <Link to="/logout" className="navLink">
-          TEMP Logout
-        </Link>
-      </li>,
+      </li>
     ];
   }
   return (

@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
+import { Navigate } from 'react-router-dom'; 
 import ryan from '../images/ryan.png'
 import bigMease from '../images/bigMease.jpg';
 
 function Valet(props) {
+
+    if(!props.loggedIn) {
+        return <Navigate to='/login' replace={true}/>
+    }
 
     return (
         <div className="Valet">

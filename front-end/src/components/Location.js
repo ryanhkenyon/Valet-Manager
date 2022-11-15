@@ -1,8 +1,14 @@
 import bigMease from "../images/bigMease.jpg";
 import { Link } from "react-router-dom";
 import ryan from "../images/ryan.png";
+import { Navigate } from 'react-router-dom'; 
 
 function Location(props) {
+
+  if(!props.loggedIn) {
+    return <Navigate to='/login' replace={true}/>
+}
+
   return (
     <div className="Location">
       <div className="pageTitle">

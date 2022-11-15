@@ -1,13 +1,13 @@
-const url = 'http://localhost:9999/post/location';
+const url = 'http://localhost:9999/get/location';
 let options = {
-    method:'POST',
+    method:'GET',
     headers: {
         'Content-Type': 'application/json'
     }
 
 };
 
-export default async function addLocation(data) {
+export default async function userRegister(data) {
     options.body = JSON.stringify(data);
     try {
         const response = await fetch(url, options);
