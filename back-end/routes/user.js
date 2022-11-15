@@ -15,6 +15,7 @@ router.post('/post/logout', controllers.user.logout);
 
 //LOCATION
 router.get('/get/location', controllers.location.get);
+router.get('/get/location/user', controllers.location.getUser);
 router.post('/post/location', controllers.location.post);
 
 //VALET

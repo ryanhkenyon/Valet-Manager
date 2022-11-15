@@ -1,10 +1,15 @@
-const url = 'http://localhost:9999/get/location';
+const url = "http://localhost:9999/get/location/user";
 let options = {
-    method:'GET'
+    method:"POST",
+    headers: {
+        'Content-Type': 'application/json'  
+    }
+   
+}
 
-};
-
-export default async function getAllLocations() {
+export default function getUserLocation(data){
+    //console.log(data);
+    options.body = JSON.stringify(data)
     return fetch(url,options)
             .then(response => {
                 //console.log(response)
@@ -14,4 +19,5 @@ export default async function getAllLocations() {
                 console.log(error)
                 return error;
             });
+
 }

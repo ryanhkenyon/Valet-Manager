@@ -6,15 +6,15 @@ function AddLocation(props) {
     console.log('hello',props.loggedIn)
     const [location, setLocation] = useState('');
     const [address, setAddress] = useState('');
+    
     const navigate = useNavigate();
+    
     if(!props.loggedIn) {
         return <Navigate to='/login' replace={true}/>
     }
-
-    
     function submitHandler(event) {
         event.preventDefault();
-
+        
         console.log(props)
         //if location or adddress are empty
 
@@ -25,6 +25,7 @@ function AddLocation(props) {
         }).then((data)=>{
             setLocation('');
             setAddress('');
+            // runFetch();
             console.log(data);
             return navigate('/locations')
         });

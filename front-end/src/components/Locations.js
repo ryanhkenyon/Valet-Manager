@@ -1,10 +1,54 @@
 import { Link } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
 import bigMease from "../images/bigMease.jpg";
 import { Navigate } from 'react-router-dom';
 import services from "../services";
+import LocationDiv from "./LocationDiv";
 
 function Locations(props) {
   let context = [];
+  const [locations, setLocations] = useState([]);
+
+
+  function runFetch() {
+    services.getUserLocation({
+        id: props.userId
+    }).then((data)=>{
+        services.getUser({
+            id:props.userId
+        }).then((user)=>{
+            data = data.map(item=>{
+                item.author = user.username;
+      return item;
+    });
+            console.log(data);
+    let newData = JSON.stringify(data);
+    let oldData = JSON.stringify(locations);
+    if (oldData !== newData) {
+                setLocations(data);
+    }
+        })
+    })
+}
+
+useEffect(() => {
+  console.log("searched");
+  runFetch();
+}, []);
+
+const locationsArray = locations.map((location,index) => {
+return (
+  <LocationDiv
+    key={location._id}
+    index={index+1}
+    location={location.location}
+    address={location.address}
+    creatorId={location.creatorId}
+  />
+);
+});
+
+
 
   if(!props.loggedIn) {
     return <Navigate to='/login' replace={true}/>
@@ -36,61 +80,7 @@ function Locations(props) {
       <h1>Your Locations</h1>
       </div>
       {/* {context} */}
-      {/* here are fake locations to test display */}
-      <div className="locationItem">
-        <img src={bigMease} className="locationImg"></img>
-        <div className="locationItemName">
-          <h5>Mease Hospital</h5>
-          <Link to="/view/location">
-            <h6>Details</h6>
-          </Link>
-        </div>
-      </div>
-      <div className="locationItem">
-        <img src={bigMease} className="locationImg"></img>
-        <div className="locationItemName">
-          <h5>Mease Hospital</h5>
-          <Link to="/view/location">
-            <h6>Details</h6>
-          </Link>
-        </div>
-      </div>
-      <div className="locationItem">
-        <img src={bigMease} className="locationImg"></img>
-        <div className="locationItemName">
-          <h5>Mease Hospital</h5>
-          <Link to="/view/location">
-            <h6>Details</h6>
-          </Link>
-        </div>
-      </div>
-      <div className="locationItem">
-        <img src={bigMease} className="locationImg"></img>
-        <div className="locationItemName">
-          <h5>Mease Hospital</h5>
-          <Link to="/view/location">
-            <h6>Details</h6>
-          </Link>
-        </div>
-      </div>
-      <div className="locationItem">
-        <img src={bigMease} className="locationImg"></img>
-        <div className="locationItemName">
-          <h5>Mease Hospital</h5>
-          <Link to="/view/location">
-            <h6>Details</h6>
-          </Link>
-        </div>
-      </div>
-      <div className="locationItem">
-        <img src={bigMease} className="locationImg"></img>
-        <div className="locationItemName">
-          <h5>Mease Hospital</h5>
-          <Link to="/view/location">
-            <h6>Details</h6>
-          </Link>
-        </div>
-      </div>
+      {locationsArray}
     </div>
   );
 }

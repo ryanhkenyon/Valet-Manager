@@ -10,6 +10,15 @@ module.exports = {
             .then((location) => res.send(location))
             .catch(next);
   },
+  getUser:(req,res,next) =>{
+    const id = req.body.id;
+    //console.log(id);
+    models.Location.find({creatorId:id})
+        .then((locations) => {
+          console.log(locations)
+          res.send(locations)})
+        .catch(next);
+},
 
   post: (req, res, next) => {
     const location = req.body;
