@@ -1,16 +1,19 @@
-import { Link, Navigate } from "react-router-dom";
-
+import {Link, useNavigate} from 'react-router-dom';
 function LocationDiv(props) {
+  const navigate = useNavigate();
 
+  const toComponentB=()=>{
+    navigate('/view/location',{state: {location:props.location, address:props.address}});
+      }
     
 	return (
 		<div className="locationItem">
         {/* <img  className="locationImg" alt='location'/> */}
         <div className="locationItemName">
           <h5>{props.location}</h5>
-          <Link to="/view/location">
+          <button onClick={()=>{toComponentB()}}>
             <h6>Details</h6>
-          </Link>
+          </button>
         </div>
       </div>
 	);

@@ -65,14 +65,14 @@ function App(props) {
           />
           <Route
             path="/view/location"
-            element={<Location loggedIn={loggedIn} />}
+            element={<Location loggedIn={loggedIn}  cookie={cookies["x-auth-token"]} userId={userId}/>}
           />
           <Route
             path="/add/location"
             element={<AddLocation loggedIn={loggedIn} cookie={cookies["x-auth-token"]} userId={userId} />}
           />
           <Route path="/valets" element={<Valets loggedIn={loggedIn} userId={userId} />} />
-          <Route path="/view/valet" element={<Valet loggedIn={loggedIn} />} />
+          <Route path="/view/valet" element={<Valet loggedIn={loggedIn} cookie={cookies["x-auth-token"]} userId={userId} />} />
           <Route
             path="/add/valet"
             element={<AddValet loggedIn={loggedIn}  cookie={cookies["x-auth-token"]} userId={userId} />}

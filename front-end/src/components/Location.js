@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import ryan from "../images/ryan.png";
 import { Navigate } from 'react-router-dom'; 
 
-function Location(props) {
 
+import {useLocation} from 'react-router-dom';
+
+function Location(props) {
+  const location = useLocation();
   if(!props.loggedIn) {
     return <Navigate to='/login' replace={true}/>
 }
@@ -12,10 +15,10 @@ function Location(props) {
   return (
     <div className="Location">
       <div className="pageTitle">
-        <h1>Mease Countryside Hospital</h1>
+        <h1>{location.state.location}</h1>
       </div>
       <img className="locationProfileImg" src={bigMease} />
-      <h5 className="black">1840 Mease Drive, Safety Harbor, FL</h5>
+      <h5 className="black">{location.state.address}</h5>
       <div id="test">
         <h3>Add Valets to this Location</h3>
         <select className="valetSelectionLocation">
@@ -26,7 +29,7 @@ function Location(props) {
         <button>Add Valet To Location</button>
       </div>
       <div className="pageTitle">
-        <h3>Valets at Mease Hospital</h3>
+        <h3>Valets at {location.state.location}</h3>
       </div>
       <div className="locationValets">
         {/* TODO: enter valets associated with location */}

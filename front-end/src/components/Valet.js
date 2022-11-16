@@ -3,7 +3,11 @@ import { Navigate } from 'react-router-dom';
 import ryan from '../images/ryan.png'
 import bigMease from '../images/bigMease.jpg';
 
+import {useLocation} from 'react-router-dom';
+
 function Valet(props) {
+
+    const location = useLocation();
 
     if(!props.loggedIn) {
         return <Navigate to='/login' replace={true}/>
@@ -12,7 +16,7 @@ function Valet(props) {
     return (
         <div className="Valet">
             <div className="pageTitle">
-            <h1>Ryan Kenyon</h1>
+            <h1>{location.state.name}</h1>
             </div>
             <img className='valetProfileImg' src={ryan} alt="valet"/>
             <h5 className="black">Minor details here</h5>

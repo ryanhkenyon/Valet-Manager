@@ -1,6 +1,12 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function ValetDiv(props) {
+
+  const navigate = useNavigate();
+
+  const toComponentB=()=>{
+    navigate('/view/valet',{state: {name:props.name}});
+      };
 
     
 	return (
@@ -10,9 +16,9 @@ function ValetDiv(props) {
           <h5>
             {props.name}
           </h5>
-          <Link to="/view/valet">
+          <button onClick={()=>{toComponentB()}}>
             <h6>Details</h6>
-          </Link>
+          </button>
         </div>
       </div>
 	);
