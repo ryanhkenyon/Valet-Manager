@@ -5,6 +5,7 @@ import getAllLocations from './getAllLocations';
 import getUserLocation from "./getUserLocation";
 import getUser from "./getUser";
 import userLogin from "./userLogin";
+import getUserValets from "./getUserValets";
 const services = {
     userRegister,
     userLogin,
@@ -12,7 +13,8 @@ const services = {
     addValet,
     addLocation,
     getAllLocations,
-    getUserLocation
+    getUserLocation,
+    getUserValets
 
 
 }

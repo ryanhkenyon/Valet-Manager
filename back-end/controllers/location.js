@@ -12,7 +12,7 @@ module.exports = {
   },
   getUser:(req,res,next) =>{
     const id = req.body.id;
-    //console.log(id);
+    console.log(req),'GET USER';
     models.Location.find({creatorId:id})
         .then((locations) => {
           console.log(locations)

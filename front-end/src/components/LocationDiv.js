@@ -5,9 +5,9 @@ function LocationDiv(props) {
     
 	return (
 		<div className="locationItem">
-        <img  className="locationImg" alt='location'/>
+        {/* <img  className="locationImg" alt='location'/> */}
         <div className="locationItemName">
-          <h5>Mease Hospital</h5>
+          <h5>{props.location}</h5>
           <Link to="/view/location">
             <h6>Details</h6>
           </Link>

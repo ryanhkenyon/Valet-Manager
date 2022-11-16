@@ -8,6 +8,7 @@ function AddLocation(props) {
     const [address, setAddress] = useState('');
     
     const navigate = useNavigate();
+    console.log("HELLO", props.userId)
     
     if(!props.loggedIn) {
         return <Navigate to='/login' replace={true}/>

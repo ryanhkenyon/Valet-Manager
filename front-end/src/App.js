@@ -33,8 +33,6 @@ function App(props) {
   const [loggedIn, setLoggedIn] = useState(
     cookies["x-auth-token"] ? true : false
   );
-  console.log(cookies["x-auth-token"]);
-  console.log(loggedIn);
   return (
     <div className="App">
       <Navigation
@@ -63,7 +61,7 @@ function App(props) {
           <Route path="/profile" element={<Profile loggedIn={loggedIn} />} />
           <Route
             path="/locations"
-            element={<Locations loggedIn={loggedIn} />}
+            element={<Locations loggedIn={loggedIn} userId={userId}/>}
           />
           <Route
             path="/view/location"
@@ -73,7 +71,7 @@ function App(props) {
             path="/add/location"
             element={<AddLocation loggedIn={loggedIn} cookie={cookies["x-auth-token"]} userId={userId} />}
           />
-          <Route path="/valets" element={<Valets loggedIn={loggedIn} />} />
+          <Route path="/valets" element={<Valets loggedIn={loggedIn} userId={userId} />} />
           <Route path="/view/valet" element={<Valet loggedIn={loggedIn} />} />
           <Route
             path="/add/valet"

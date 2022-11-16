@@ -7,6 +7,9 @@ const router = require('express').Router();
 router.get('/get/register', controllers.user.register.get);
 router.post('/post/register', controllers.user.register.post);
 
+//GET USER BY ID
+router.get('/get/:id', controllers.user.getOne);
+
 //USER LOGIN/LOGOUT
 router.get('/get/login', controllers.user.login.get);
 router.post('/post/login', controllers.user.login.post);
@@ -15,11 +18,12 @@ router.post('/post/logout', controllers.user.logout);
 
 //LOCATION
 router.get('/get/location', controllers.location.get);
-router.get('/get/location/user', controllers.location.getUser);
+router.post('/get/location/:id', controllers.location.getUser);
 router.post('/post/location', controllers.location.post);
 
 //VALET
 router.get('/get/valet', controllers.valet.get);
+router.post('/get/valet/:id', controllers.valet.getUser);
 router.post('/post/valet', controllers.valet.post);
 
 

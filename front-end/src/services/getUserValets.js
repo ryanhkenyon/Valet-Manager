@@ -6,14 +6,14 @@ let options = {
     
 }
 
-export default function getUserLocation(data){
+export default function getUserValets(data){
     console.log(data, 'cmon')
-    const url = "http://localhost:9999/get/location/" + data.id;
+    const url = "http://localhost:9999/get/valet/" + data.id;
     console.log(data);
     options.body = JSON.stringify(data)
     return fetch(url,options)
             .then(response => {
-                //console.log(response)
+                console.log(response)
               return response.json()
             })
             .catch(error=>{
