@@ -1,35 +1,112 @@
 import bigMease from "../images/bigMease.jpg";
 import { Link } from "react-router-dom";
 import ryan from "../images/ryan.png";
-import { Navigate } from 'react-router-dom'; 
+import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-
-import {useLocation} from 'react-router-dom';
+import services from "../services";
 
 function Location(props) {
-  const location = useLocation();
-  if(!props.loggedIn) {
-    return <Navigate to='/login' replace={true}/>
-}
+  const navigate = useNavigate();
+  const locationState = useLocation();
 
+  const [valet, setValet] = useState("");
+  const [valets, setValets] = useState([]);
+
+  function runFetch() {
+    services
+      .getUserValets({
+        id: props.userId,
+      })
+      .then((data) => {
+        console.log(data, "help");
+        services
+          .getUser({
+            creatorId: props.userId,
+          })
+          .then((user) => {
+            console.log(data, user);
+            data = data.map((item) => {
+              item.author = user.username;
+              return item;
+            });
+            console.log(data);
+            let newData = JSON.stringify(data);
+            let oldData = JSON.stringify(valets);
+            if (oldData !== newData) {
+              setValets(data);
+            }
+          });
+      });
+  }
+
+  useEffect(() => {
+    console.log("searched");
+    runFetch();
+  }, []);
+
+  if (!props.loggedIn) {
+    return <Navigate to="/login" replace={true} />;
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    //if location or adddress are empty
+
+    services
+      .addValetToLocation({
+        valetId: valet,
+      })
+      .then((data) => {
+        setValet("");
+        // runFetch();
+        console.log(data);
+      });
+  }
+
+  console.log(valets,'aye')
+
+  const valetArray = valets.map((valet, index) => {
+    console.log(valet)
+    return (
+      <option
+        key={valet._id}
+        id={valet._id}
+        index={index + 1}
+        name={valet.name}
+        creatorId={valet.creatorId}
+      >
+        {valet.name}
+      </option>
+    );
+  });
+
+  console.log(valetArray);
   return (
     <div className="Location">
       <div className="pageTitle">
-        <h1>{location.state.location}</h1>
+        <h1>{locationState.state.location}</h1>
       </div>
       <img className="locationProfileImg" src={bigMease} />
-      <h5 className="black">{location.state.address}</h5>
+      <h5 className="black">{locationState.state.address}</h5>
       <div id="test">
-        <h3>Add Valets to this Location</h3>
-        <select className="valetSelectionLocation">
-          <option>Ryan Kenyon</option>
-          <option>Stephanie Yulisupialous</option>
-        </select>
-        <br />
-        <button>Add Valet To Location</button>
+        <form onClick={submitHandler}>
+          <h3>Add Valets to this Location</h3>
+          <select
+            className="valetSelectionLocation"
+            value={valet}
+            onChange={(e) => {
+              setValet(e.target.value);
+            }}
+          >{valetArray}</select>
+          <br />
+          <button>Add Valet To Location</button>
+        </form>
       </div>
       <div className="pageTitle">
-        <h3>Valets at {location.state.location}</h3>
+        <h3>Valets at {locationState.state.location}</h3>
       </div>
       <div className="locationValets">
         {/* TODO: enter valets associated with location */}

@@ -6,7 +6,8 @@ const Valet = require("../models/Valet");
 
 module.exports = {
   get: (req, res, next) => {
-    console.log("u wanna register?");
+    models.Valet.find()
+      .then((valets)=> res.send(valets)).catch(next);
   },
 
   getUser:(req,res,next) =>{
@@ -27,4 +28,7 @@ module.exports = {
       .then((newValet) => res.send(newValet))
       .catch(next);
   },
+  addToLocation: (req, res, next) => {
+    console.log(req.body);
+  }
 };

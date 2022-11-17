@@ -27,4 +27,8 @@ module.exports = {
       .then((newLocation) => res.send(newLocation))
       .catch(next);
   },
+
+  addToValet: (req, res, next) => {
+    console.log(req.body);
+  }
 };
