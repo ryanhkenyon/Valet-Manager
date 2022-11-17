@@ -3,7 +3,7 @@ function LocationDiv(props) {
   const navigate = useNavigate();
 
   const toComponentB=()=>{
-    navigate('/view/location',{state: {location:props.location, address:props.address}});
+    navigate('/view/location',{state: {location:props.location, address:props.address, id:props.id}});
       }
     
 	return (

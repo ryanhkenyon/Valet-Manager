@@ -12,10 +12,8 @@ module.exports = {
   },
   getUser:(req,res,next) =>{
     const id = req.body.id;
-    console.log(req),'GET USER';
     models.Location.find({creatorId:id})
         .then((locations) => {
-          console.log(locations)
           res.send(locations)})
         .catch(next);
 },
@@ -29,6 +27,14 @@ module.exports = {
   },
 
   addToValet: (req, res, next) => {
-    console.log(req.body);
+    
+  },
+
+  delete: (req, res, next) => {
+    const id = req.params.id;
+    console.log('yooosoa', id)
+    models.Location.deleteOne({_id: id})
+    .then((removedLocation)=>res.send(removedLocation))
+    .catch(next);
   }
 };

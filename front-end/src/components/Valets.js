@@ -7,27 +7,22 @@ import { Navigate } from "react-router-dom";
 function Valets(props) {
   let context = [];
   const [valets, setValets] = useState([]);
-  console.log(props);
 
   function runFetch() {
-    console.log("running runfetch in valets");
     services
       .getUserValets({
         id: props.userId,
       })
       .then((data) => {
-        console.log(data, "help");
         services
           .getUser({
             creatorId: props.userId,
           })
           .then((user) => {
-            console.log(data, user);
             data = data.map((item) => {
               item.creatorId = user.username;
               return item;
             });
-            console.log(data);
             let newData = JSON.stringify(data);
             let oldData = JSON.stringify(valets);
             if (oldData !== newData) {
@@ -38,7 +33,6 @@ function Valets(props) {
   }
 
   useEffect(() => {
-    console.log("searched");
     runFetch();
   }, []);
 
@@ -46,6 +40,7 @@ function Valets(props) {
     return (
       <ValetDiv
         key={valet._id}
+        id={valet._id}
         index={index + 1}
         name={valet.name}
         creatorId={valet.creatorId}

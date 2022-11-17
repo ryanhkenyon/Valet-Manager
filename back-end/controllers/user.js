@@ -131,8 +131,6 @@ module.exports = {
 
   getOne: (req, res, next) => {
     const {id} = req.params;
-    console.log('HEY', req)
-    console.log(id);
     models.User.findById(id)
         .then((user) => res.send(user))
         .catch(next)

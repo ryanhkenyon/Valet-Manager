@@ -30,5 +30,13 @@ module.exports = {
   },
   addToLocation: (req, res, next) => {
     console.log(req.body);
+  },
+  
+  delete: (req, res, next) => {
+    const id = req.params.id;
+    console.log('yooosoa', id)
+    models.Valet.deleteOne({_id: id})
+    .then((removedValet)=>res.send(removedValet))
+    .catch(next);
   }
 };

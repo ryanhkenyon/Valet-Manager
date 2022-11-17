@@ -3,12 +3,10 @@ import React, {useState} from 'react';
 import { Navigate , useNavigate} from 'react-router-dom'; 
 
 function AddLocation(props) {
-    console.log('hello',props.loggedIn)
     const [location, setLocation] = useState('');
     const [address, setAddress] = useState('');
     
     const navigate = useNavigate();
-    console.log("HELLO", props.userId)
     
     if(!props.loggedIn) {
         return <Navigate to='/login' replace={true}/>
@@ -16,7 +14,6 @@ function AddLocation(props) {
     function submitHandler(event) {
         event.preventDefault();
         
-        console.log(props)
         //if location or adddress are empty
 
         services.addLocation({
@@ -27,7 +24,6 @@ function AddLocation(props) {
             setLocation('');
             setAddress('');
             // runFetch();
-            console.log(data);
             return navigate('/locations')
         });
     }

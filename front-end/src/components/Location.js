@@ -20,18 +20,15 @@ function Location(props) {
         id: props.userId,
       })
       .then((data) => {
-        console.log(data, "help");
         services
           .getUser({
             creatorId: props.userId,
           })
           .then((user) => {
-            console.log(data, user);
             data = data.map((item) => {
               item.author = user.username;
               return item;
             });
-            console.log(data);
             let newData = JSON.stringify(data);
             let oldData = JSON.stringify(valets);
             if (oldData !== newData) {
@@ -42,7 +39,6 @@ function Location(props) {
   }
 
   useEffect(() => {
-    console.log("searched");
     runFetch();
   }, []);
 
@@ -66,10 +62,9 @@ function Location(props) {
       });
   }
 
-  console.log(valets,'aye')
 
   const valetArray = valets.map((valet, index) => {
-    console.log(valet)
+    
     return (
       <option
         key={valet._id}
@@ -83,11 +78,20 @@ function Location(props) {
     );
   });
 
-  console.log(valetArray);
+  function deleteLocation() {
+    services.deleteLocation({
+      id: locationState.state.id
+    }).then((data)=>{
+      navigate('/locations')
+    })
+  }
+
+  
   return (
     <div className="Location">
       <div className="pageTitle">
         <h1>{locationState.state.location}</h1>
+        <button onClick={deleteLocation}>Delete {locationState.state.location}</button>
       </div>
       <img className="locationProfileImg" src={bigMease} />
       <h5 className="black">{locationState.state.address}</h5>

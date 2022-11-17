@@ -21,12 +21,14 @@ router.get('/get/location', controllers.location.get);
 router.post('/get/location/:id', controllers.location.getUser);
 router.post('/post/location', controllers.location.post);
 router.post('/post/location/valet', controllers.location.addToValet);
+router.delete('/delete/location/:id', controllers.location.delete)
 
 //VALET
 router.get('/get/valet', controllers.valet.get);
 router.post('/get/valet/:id', controllers.valet.getUser);
 router.post('/post/valet', controllers.valet.post);
 router.post('/post/valet/location', controllers.valet.addToLocation);
+router.delete('/delete/valet/:id', controllers.valet.delete)
 
 
 // router.put('/:id', controllers.user.put);

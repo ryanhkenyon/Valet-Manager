@@ -24,18 +24,15 @@ function Valet(props) {
         id: props.userId,
       })
       .then((data) => {
-        console.log(data, "help");
         services
           .getUser({
             creatorId: props.userId,
           })
           .then((user) => {
-            console.log(data, user);
             data = data.map((item) => {
               item.author = user.username;
               return item;
             });
-            console.log(data);
             let newData = JSON.stringify(data);
             let oldData = JSON.stringify(locations);
             if (oldData !== newData) {
@@ -46,14 +43,12 @@ function Valet(props) {
   }
 
   useEffect(() => {
-    console.log("searched");
     runFetch();
   }, []);
 
   function submitHandler(event) {
     event.preventDefault();
     
-    console.log(location)
     //if location or adddress are empty
 
     services.addLocationToValet({
@@ -61,12 +56,19 @@ function Valet(props) {
     }).then((data)=>{
         setLocation('');
         // runFetch();
-        console.log(data);
         return navigate('/locations')
     });
 }
 
-console.log(locations)
+function deleteValet() {
+  console.log(locationState)
+  services.deleteValet({
+    id: locationState.state.id
+  }).then((data)=>{
+    navigate('/valets')
+  })
+}
+
 
   const locationsArray = locations.map((location, index) => {
     return (
@@ -81,7 +83,6 @@ console.log(locations)
     );
   });
 
-  console.log(locationsArray)
 
     if(!props.loggedIn) {
         return <Navigate to='/login' replace={true}/>
@@ -91,6 +92,9 @@ console.log(locations)
         <div className="Valet">
             <div className="pageTitle">
             <h1>{locationState.state.name}</h1>
+            <button onClick={deleteValet}>Delete 
+            {/* {locationState.state.location} */}
+              </button>
             </div>
             <img className='valetProfileImg' src={ryan} alt="valet"/>
             <h5 className="black">Minor details here</h5>

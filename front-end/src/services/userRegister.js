@@ -8,7 +8,6 @@ let options = {
 };
 
 export default async function userRegister(data) {
-    console.log(data)
     options.body = JSON.stringify(data);
     return fetch(url,options)
     .then(response => {

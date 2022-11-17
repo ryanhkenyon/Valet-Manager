@@ -14,18 +14,15 @@ function Locations(props) {
         id: props.userId,
       })
       .then((data) => {
-        console.log(data, "help");
         services
           .getUser({
             creatorId: props.userId,
           })
           .then((user) => {
-            console.log(data, user);
             data = data.map((item) => {
               item.author = user.username;
               return item;
             });
-            console.log(data);
             let newData = JSON.stringify(data);
             let oldData = JSON.stringify(locations);
             if (oldData !== newData) {
@@ -36,7 +33,6 @@ function Locations(props) {
   }
 
   useEffect(() => {
-    console.log("searched");
     runFetch();
   }, []);
 
@@ -44,6 +40,7 @@ function Locations(props) {
     return (
       <LocationDiv
         key={location._id}
+        id={location._id}
         index={index + 1}
         location={location.location}
         address={location.address}
@@ -51,8 +48,6 @@ function Locations(props) {
       />
     );
   });
-
-  console.log(props);
 
   if (!props.loggedIn) {
     return <Navigate to="/login" replace={true} />;

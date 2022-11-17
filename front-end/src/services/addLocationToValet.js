@@ -7,7 +7,7 @@ let options = {
 
 };
 
-export default async function addLocation(data) {
+export default async function addLocationToValet(data) {
     options.body = JSON.stringify(data);
     try {
         const response = await fetch(url, options);
