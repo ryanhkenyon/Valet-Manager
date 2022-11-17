@@ -1,22 +1,21 @@
 import { Link } from "react-router-dom";
-import { Navigate , useNavigate} from 'react-router-dom'; 
-import ryan from '../images/ryan.png'
-import bigMease from '../images/bigMease.jpg';
+import { Navigate, useNavigate } from "react-router-dom";
+import ryan from "../images/ryan.png";
+import bigMease from "../images/bigMease.jpg";
 
-
-import {useLocation} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 import React, { useState, useEffect } from "react";
 
 import services from "../services";
 
 function Valet(props) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const locationState = useLocation();
+  const locationState = useLocation();
 
-    const [location, setLocation] = useState('');
-    const [locations, setLocations] = useState([]);
+  const [location, setLocation] = useState("");
+  const [locations, setLocations] = useState([]);
 
   function runFetch() {
     services
@@ -48,27 +47,18 @@ function Valet(props) {
 
   function submitHandler(event) {
     event.preventDefault();
-    
-    //if location or adddress are empty
 
-    services.addLocationToValet({
-        locationId: location
-    }).then((data)=>{
-        setLocation('');
+    services
+      .addLocationToValet({
+        locationName: location,
+        valetId: locationState.state.id
+      })
+      .then((data) => {
+        setLocation("");
         // runFetch();
-        return navigate('/locations')
-    });
-}
-
-function deleteValet() {
-  console.log(locationState)
-  services.deleteValet({
-    id: locationState.state.id
-  }).then((data)=>{
-    navigate('/valets')
-  })
-}
-
+        return navigate("/valets");
+      });
+  }
 
   const locationsArray = locations.map((location, index) => {
     return (
@@ -79,53 +69,71 @@ function deleteValet() {
         location={location.location}
         address={location.address}
         creatorId={location.creatorId}
-      >{location.location}</option>
+      >
+        {location.location}
+      </option>
     );
   });
 
+  function deleteValet() {
+    services
+      .deleteValet({
+        id: locationState.state.id,
+      })
+      .then((data) => {
+        navigate("/valets");
+      });
+  }
 
-    if(!props.loggedIn) {
-        return <Navigate to='/login' replace={true}/>
-    }
+  if (!props.loggedIn) {
+    return <Navigate to="/login" replace={true} />;
+  }
 
-    return (
-        <div className="Valet">
-            <div className="pageTitle">
-            <h1>{locationState.state.name}</h1>
-            <button onClick={deleteValet}>Delete 
-            {/* {locationState.state.location} */}
-              </button>
-            </div>
-            <img className='valetProfileImg' src={ryan} alt="valet"/>
-            <h5 className="black">Minor details here</h5>
-            <div id="test">
-            <form onClick={submitHandler}>
-            <h3>Add Valets to this Location</h3>
-            <select value={location}className='valetSelectionLocation' onChange={(e)=>{setLocation(e.target.value)}}>
-                    {locationsArray}
-                </select>
-                <br/>
-                <button>Assign Location To Valet</button>
-            </form>
-            </div>
-            <div className="pageTitle">
-                <h3>Locations for Ryan Kenyon</h3>
-            </div>
-            <div className='valetLocations'>
-                {/* TODO: enter locations associated with valet */}
-                <div className="locationItem">
-                <img src={bigMease} className="locationImg"></img>
-                <div className='locationItemName'>
-                <h5>Mease Hospital</h5>
-                <Link to='/view/location'>
-                    <h6>Details</h6>
-                </Link>
-                </div>
-            </div>
-            </div>
+  return (
+    <div className="Valet">
+      <div className="pageTitle">
+        <h1>{locationState.state.name}</h1>
+        <button onClick={deleteValet}>
+          Delete
+          {/* {locationState.state.location} */}
+        </button>
+      </div>
+      <img className="valetProfileImg" src={ryan} alt="valet" />
+      <h5 className="black">Minor details here</h5>
+      <div id="test">
+        <form onSubmit={submitHandler}>
+          <h3>Add Valets to this Location</h3>
+          <select
+            value={location}
+            className="valetSelectionLocation"
+            onChange={(e) => {
+              setLocation(e.target.value);
+            }}
+          >
+            <option>CHOOSE ONE</option>
+            {locationsArray}
+          </select>
+          <br />
+          <button type="submit">Assign Location To Valet</button>
+        </form>
+      </div>
+      <div className="pageTitle">
+        <h3>Locations for {locationState.state.name}</h3>
+      </div>
+      <div className="valetLocations">
+        {/* TODO: enter locations associated with valet */}
+        <div className="locationItem">
+          <img src={bigMease} className="locationImg"></img>
+          <div className="locationItemName">
+            <h5>Mease Hospital</h5>
+            <Link to="/view/location">
+              <h6>Details</h6>
+            </Link>
+          </div>
         </div>
-        
-    )
+      </div>
+    </div>
+  );
 }
 
 export default Valet;

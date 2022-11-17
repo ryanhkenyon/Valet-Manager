@@ -27,7 +27,18 @@ module.exports = {
   },
 
   addToValet: (req, res, next) => {
-    
+    models.Valet.find({_id:req.body.valetId}).
+    then((valets)=>{
+      models.Location.find({location:req.body.locationName})
+      .then((locations)=>{
+        console.log(locations, valets)
+        valets[0].locations.push(locations[0]._id);
+        locations[0].valets.push(valets[0]._id);
+        locations[0].save();
+        valets[0].save();
+      });
+        
+    });
   },
 
   delete: (req, res, next) => {

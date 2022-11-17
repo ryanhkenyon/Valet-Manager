@@ -29,12 +29,22 @@ module.exports = {
       .catch(next);
   },
   addToLocation: (req, res, next) => {
-    console.log(req.body);
+    
+    models.Valet.find({name:req.body.valetName}).
+    then((valets)=>{
+      models.Location.find({_id:req.body.locationId})
+      .then((locations)=>{
+        valets[0].locations.push(locations[0]._id);
+        locations[0].valets.push(valets[0]._id);
+        locations[0].save();
+        valets[0].save();
+      });
+        
+    });
   },
   
   delete: (req, res, next) => {
     const id = req.params.id;
-    console.log('yooosoa', id)
     models.Valet.deleteOne({_id: id})
     .then((removedValet)=>res.send(removedValet))
     .catch(next);

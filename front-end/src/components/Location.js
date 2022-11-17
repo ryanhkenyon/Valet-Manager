@@ -48,17 +48,18 @@ function Location(props) {
 
   function submitHandler(event) {
     event.preventDefault();
-
-    //if location or adddress are empty
-
+    console.log('submit handler')
+    console.log(valet)
     services
       .addValetToLocation({
-        valetId: valet,
+        valetName: valet,
+        locationId: locationState.state.id
       })
       .then((data) => {
         setValet("");
         // runFetch();
         console.log(data);
+        navigate('/locations')
       });
   }
 
@@ -79,6 +80,7 @@ function Location(props) {
   });
 
   function deleteLocation() {
+
     services.deleteLocation({
       id: locationState.state.id
     }).then((data)=>{
@@ -96,7 +98,7 @@ function Location(props) {
       <img className="locationProfileImg" src={bigMease} />
       <h5 className="black">{locationState.state.address}</h5>
       <div id="test">
-        <form onClick={submitHandler}>
+        <form onSubmit={submitHandler}>
           <h3>Add Valets to this Location</h3>
           <select
             className="valetSelectionLocation"
@@ -104,9 +106,10 @@ function Location(props) {
             onChange={(e) => {
               setValet(e.target.value);
             }}
-          >{valetArray}</select>
+          ><option>CHOOSE ONE</option>
+            {valetArray}</select>
           <br />
-          <button>Add Valet To Location</button>
+          <button type="submit">Add Valet To Location</button>
         </form>
       </div>
       <div className="pageTitle">
