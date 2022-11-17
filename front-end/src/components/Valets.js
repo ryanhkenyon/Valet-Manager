@@ -2,7 +2,7 @@ import ValetDiv from "./ValetDiv";
 import React, { useState, useEffect } from "react";
 import services from "../services";
 
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 function Valets(props) {
   let context = [];
@@ -71,6 +71,25 @@ function Valets(props) {
   // } else {
   //   context = [<div></div>];
   // }
+
+  if (valetsArray.length == 0) {
+    return (
+      <div className="Valets">
+      <div className="pageTitle">
+        <h1>Your Valets</h1>
+        </div>
+        <div className="mainPageBox">
+      <h3>You have no valets!</h3>
+      <div className="mainLink">
+      <Link  to='/add/valet'>
+        <h2>Add one here!</h2>
+      </Link>
+      </div>
+      </div>
+      </div>
+    )
+  }
+
   return (
     <div className="Valets">
       <div className="pageTitle">

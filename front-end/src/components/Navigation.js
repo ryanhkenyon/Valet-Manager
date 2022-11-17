@@ -1,13 +1,14 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function Navigation(props) {
+  const navigate = useNavigate();
   let loggedIn = props.loggedIn;
   let navItems = [];
   function clickHandler(event) {
     console.log(window.location);
       props.setLoggedIn(false);
       props.removeCookie('x-auth-token',{path:'/'});
-      return <Navigate to='/login' replace={true}/>
+      navigate('/');
   }
 
   if (loggedIn) {

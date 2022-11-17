@@ -66,10 +66,6 @@ function Login(props) {
           <button type="submit">Login</button>
         </div>
       </form>
-      {/* i'm cheating right now */}
-      <Link to="/profile">
-        <h4>Take me to profile page</h4>
-      </Link>
     </div>
   );
 }

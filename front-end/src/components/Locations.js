@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import services from "../services";
 import LocationDiv from "./LocationDiv";
-
+import { Link } from "react-router-dom";
 function Locations(props) {
   let context = [];
   const [locations, setLocations] = useState([]);
@@ -73,14 +73,35 @@ function Locations(props) {
   // } else {
   //   context = [{locationsArray}];
   // }
-  return (
-    <div className="Locations">
+
+  if (locationsArray.length == 0) {
+    return (
+      <div className="Locations">
       <div className="pageTitle">
         <h1>Your Locations</h1>
       </div>
-      {locationsArray}
+      <div className="mainPageBox">
+      <h3>You have no locations!</h3>
+      <div className="mainLink">
+      <Link  to='/add/location'>
+        <h2>Add one here!</h2>
+      </Link>
+      </div>
+
+      </div>
     </div>
-  );
+    );
+  } else {
+    return (
+      <div className="Locations">
+        <div className="pageTitle">
+          <h1>Your Locations</h1>
+        </div>
+        {locationsArray}
+      </div>
+    );
+  }
+
 }
 
 export default Locations;

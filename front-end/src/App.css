@@ -64,7 +64,6 @@
 	color: white;
 	position: absolute;
 	top: 0;
-  
 }
 
 .navTitle {
@@ -130,6 +129,8 @@
   border-radius: 20px;
   width: 400px;
   margin-bottom: 50px;
+  color: white;
+  text-decoration: none;
 }
 
 .mainLink:hover {
