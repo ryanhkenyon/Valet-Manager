@@ -11,8 +11,13 @@ module.exports = {
       .catch(next);
   },
   getOne: (req, res, next) => {
-    models.Valet.findById(id)
-      .then((valet) => res.send(valet))
+    console.log('hello?', req.body)
+    let id = Object.keys(req.body)[0]
+    console.log(id)
+    models.Valet.find({_id:id})
+      .then((valet) => {
+        res.send(valet)
+      })
       .catch(next);
   },
 
@@ -40,11 +45,11 @@ module.exports = {
   addToLocation: (req, res, next) => {
     models.Valet.find({ name: req.body.valetName }).then((valets) => {
       models.Location.find({ _id: req.body.locationId }).then((locations) => {
-        console.log(locations[0],valets[0])
         valets[0].locations.push(locations[0]);
         locations[0].valets.push(valets[0]);
         locations[0].save();
         valets[0].save();
+        res.send(valets[0])
       });
     });
   },

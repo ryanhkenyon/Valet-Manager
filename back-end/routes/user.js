@@ -32,6 +32,7 @@ router.post('/post/valet', controllers.valet.post);
 router.post('/post/valet/location', controllers.valet.addToLocation);
 router.delete('/delete/valet/:id', controllers.valet.delete);
 router.post('/post/valet/locations/:id', controllers.valet.getLocations);
+router.post('/post/valet/getOne', controllers.valet.getOne);
 
 
 // router.put('/:id', controllers.user.put);

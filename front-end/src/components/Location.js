@@ -1,5 +1,5 @@
 import bigMease from "../images/bigMease.jpg";
-import { Link } from "react-router-dom";
+import { Link, useHref } from "react-router-dom";
 import ryan from "../images/ryan.png";
 import { Navigate, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
@@ -7,12 +7,16 @@ import { useLocation } from "react-router-dom";
 
 import services from "../services";
 
+
+import ValetDiv from './ValetDiv';
+
 function Location(props) {
   const navigate = useNavigate();
   const locationState = useLocation();
 
   const [valet, setValet] = useState("");
   const [valets, setValets] = useState([]);
+  const [valetId, setValetId] = useState('');
 
   function runFetch() {
     services
@@ -40,6 +44,22 @@ function Location(props) {
             locationId: locationState.state.id
           }).then((valets)=>{
           console.log('AYYYEEE', valets)
+          console.log(valets)
+          // let array = [];
+          // let i = 0;
+          // for (let valet of locationState.state.valets) {
+          //   services.getOneValet(valet).then((valetObj)=>{
+
+          //     array[i] = valetObj[0].name;
+          //     array[i+1] = valetObj[0]._id;
+          //     i+=2;
+          //   });
+          // }
+          // console.log(array)
+          // console.log(array.reduce((a,v)=>({...a,[v]:v})),{});
+          // console.log([1,2,3,4])
+          // console.log(locationState.state.valets)
+          // console.log(objArray)
         })
       })
       
@@ -54,23 +74,7 @@ function Location(props) {
     return <Navigate to="/login" replace={true} />;
   }
 
-  function submitHandler(event) {
-    event.preventDefault();
-    console.log("submit handler");
-    console.log(valet);
-    services
-      .addValetToLocation({
-        valetName: valet,
-        locationId: locationState.state.id,
-      })
-      .then((data) => {
-        setValet("");
-        // runFetch();
-        console.log(data);
-        navigate("/locations");
-      });
-  }
-
+  
   const valetArray = valets.map((valet, index) => {
     return (
       <option
@@ -85,19 +89,72 @@ function Location(props) {
       </option>
     );
   });
-
-  function deleteLocation() {
-    services
+  
+  let employees = []
+  
+  for (let valet of valets) {
+    console.log(valet)
+    if (valet.locations.length == 0) {
+      console.log('empty')
+    } else {
+      console.log(valet.locations)
+      for (let location of valet.locations) {
+        console.log(locationState.state.id)
+        if (location == locationState.state.id) {
+          employees.push(valet)
+        }
+      }
+    }
+  }
+  
+  console.log('PLEASE', employees)
+  let employeeDivs;
+  
+  if (employees.length == 0) {
+    employeeDivs = (<h2 className="black">This location has no valets!</h2>)
+  } else {
+    employeeDivs = employees.map((employee, index) => {
+      return (
+        <ValetDiv
+        key={employee._id}
+        id={employee._id}
+        index ={index + 1}
+        name={employee.name}
+        locations={employee.locations}
+        creatorId={employee.creatorId}
+        />
+        )
+      })
+      
+    }
+    
+    
+    function deleteLocation() {
+      services
       .deleteLocation({
         id: locationState.state.id,
       })
       .then((data) => {
         navigate("/locations");
       });
-  }
+    }
 
-  return (
-    <div className="Location">
+    function submitHandler(event) {
+      event.preventDefault();
+      services
+        .addValetToLocation({
+          valetName: valet,
+          locationId: locationState.state.id,
+        })
+        .then((data) => {
+          console.log('YASH', data)
+          setValet("");
+          
+        });
+    }
+    
+    return (
+      <div className="Location">
       <div className="pageTitle">
         <h1>{locationState.state.location}</h1>
         <button onClick={deleteLocation}>
@@ -120,7 +177,7 @@ function Location(props) {
             {valetArray}
           </select>
           <br />
-          <button type="submit">Add Valet To Location</button>
+          <button type="submit" >Add Valet To Location</button>
         </form>
       </div>
       <div className="pageTitle">
@@ -128,15 +185,7 @@ function Location(props) {
       </div>
       <div className="locationValets">
         {/* TODO: enter valets associated with location */}
-        <div className="valetItem">
-          <img src={ryan} className="valetImg" />
-          <div className="valetItemName">
-            <h5>Ryan Kenyon</h5>
-            <Link to="/view/valet">
-              <h6>Details</h6>
-            </Link>
-          </div>
-        </div>
+        {employeeDivs}
       </div>
     </div>
   );

@@ -61,7 +61,7 @@ function Valet(props) {
       .then((data) => {
         setLocation("");
         // runFetch();
-        return navigate("/valets");
+        
       });
   }
 

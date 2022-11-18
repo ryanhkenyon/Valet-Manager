@@ -22,10 +22,16 @@ module.exports = {
   getValets: (req, res, next) => {
     models.Location.find({_id:req.body.locationId})
     .then((location)=>{
-      console.log(location.valets)
-      let lesse = location.valet.toObject();
-      console.log(lesse)
-      res.send(lesse)
+      console.log(location[0].valets)
+      if (location[0].valets === undefined) {
+        res.send('no valets');
+      } else {
+        console.log(location[0].valets)
+      }
+      // res.send(location.valets)
+      // let lesse = location.valet.toObject();
+      // console.log(lesse)
+      // res.send(lesse)
     });
   },
 
@@ -41,7 +47,6 @@ module.exports = {
     models.Valet.find({ _id: req.body.valetId }).then((valets) => {
       models.Location.find({ location: req.body.locationName }).then(
         (locations) => {
-          console.log(locations[0],valets[0])
           valets[0].locations.push(locations[0]);
           locations[0].valets.push(valets[0]);
           locations[0].save();

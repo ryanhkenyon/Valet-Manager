@@ -44,6 +44,7 @@ function Locations(props) {
         index={index + 1}
         location={location.location}
         address={location.address}
+        valets={location.valets}
         creatorId={location.creatorId}
       />
     );
