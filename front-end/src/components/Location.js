@@ -21,7 +21,7 @@ function Location(props) {
       })
       .then((data) => {
         services
-          .getUser({
+        .getUser({
             creatorId: props.userId,
           })
           .then((user) => {
@@ -35,11 +35,19 @@ function Location(props) {
               setValets(data);
             }
           });
-      });
+        }).then((data)=>{
+          services.getLocationValets({
+            locationId: locationState.state.id
+          }).then((valets)=>{
+          console.log('AYYYEEE', valets)
+        })
+      })
+      
   }
 
   useEffect(() => {
     runFetch();
+    
   }, []);
 
   if (!props.loggedIn) {
@@ -48,30 +56,29 @@ function Location(props) {
 
   function submitHandler(event) {
     event.preventDefault();
-    console.log('submit handler')
-    console.log(valet)
+    console.log("submit handler");
+    console.log(valet);
     services
       .addValetToLocation({
         valetName: valet,
-        locationId: locationState.state.id
+        locationId: locationState.state.id,
       })
       .then((data) => {
         setValet("");
         // runFetch();
         console.log(data);
-        navigate('/locations')
+        navigate("/locations");
       });
   }
 
-
   const valetArray = valets.map((valet, index) => {
-    
     return (
       <option
         key={valet._id}
         id={valet._id}
         index={index + 1}
         name={valet.name}
+        locations={valet.locations}
         creatorId={valet.creatorId}
       >
         {valet.name}
@@ -80,20 +87,22 @@ function Location(props) {
   });
 
   function deleteLocation() {
-
-    services.deleteLocation({
-      id: locationState.state.id
-    }).then((data)=>{
-      navigate('/locations')
-    })
+    services
+      .deleteLocation({
+        id: locationState.state.id,
+      })
+      .then((data) => {
+        navigate("/locations");
+      });
   }
 
-  
   return (
     <div className="Location">
       <div className="pageTitle">
         <h1>{locationState.state.location}</h1>
-        <button onClick={deleteLocation}>Delete {locationState.state.location}</button>
+        <button onClick={deleteLocation}>
+          Delete {locationState.state.location}
+        </button>
       </div>
       <img className="locationProfileImg" src={bigMease} />
       <h5 className="black">{locationState.state.address}</h5>
@@ -106,8 +115,10 @@ function Location(props) {
             onChange={(e) => {
               setValet(e.target.value);
             }}
-          ><option>CHOOSE ONE</option>
-            {valetArray}</select>
+          >
+            <option>CHOOSE ONE</option>
+            {valetArray}
+          </select>
           <br />
           <button type="submit">Add Valet To Location</button>
         </form>

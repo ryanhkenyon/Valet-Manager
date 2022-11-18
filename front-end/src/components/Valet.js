@@ -9,6 +9,8 @@ import React, { useState, useEffect } from "react";
 
 import services from "../services";
 
+import LocationDiv from "./LocationDiv";
+
 function Valet(props) {
   const navigate = useNavigate();
 
@@ -16,6 +18,7 @@ function Valet(props) {
 
   const [location, setLocation] = useState("");
   const [locations, setLocations] = useState([]);
+  console.log(locationState.state);
 
   function runFetch() {
     services
@@ -39,6 +42,8 @@ function Valet(props) {
             }
           });
       });
+
+      
   }
 
   useEffect(() => {
@@ -51,7 +56,7 @@ function Valet(props) {
     services
       .addLocationToValet({
         locationName: location,
-        valetId: locationState.state.id
+        valetId: locationState.state.id,
       })
       .then((data) => {
         setLocation("");
@@ -68,6 +73,7 @@ function Valet(props) {
         index={index + 1}
         location={location.location}
         address={location.address}
+        valets={location.valets}
         creatorId={location.creatorId}
       >
         {location.location}

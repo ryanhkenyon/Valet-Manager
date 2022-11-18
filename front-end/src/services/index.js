@@ -10,6 +10,8 @@ import addLocationToValet from "./addLocationToValet";
 import addValetToLocation from "./addValetToLocation";
 import deleteLocation from './deleteLocation';
 import deleteValet from "./deleteValet";
+import getLocationValets from "./getLocationValets";
+import getValetLocations from "./getValetLocations";
 const services = {
     userRegister,
     userLogin,
@@ -22,7 +24,9 @@ const services = {
     addLocationToValet,
     addValetToLocation,
     deleteLocation,
-    deleteValet
+    deleteValet,
+    getLocationValets,
+    getValetLocations
 
 
 }

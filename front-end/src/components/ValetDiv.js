@@ -5,7 +5,7 @@ function ValetDiv(props) {
   const navigate = useNavigate();
 
   const toComponentB=()=>{
-    navigate('/view/valet',{state: {name:props.name, id:props.id}});
+    navigate('/view/valet',{state: {name:props.name, id:props.id, locations: props.locations}});
       };
 
     

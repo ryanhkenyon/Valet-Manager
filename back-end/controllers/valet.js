@@ -7,21 +7,30 @@ const Valet = require("../models/Valet");
 module.exports = {
   get: (req, res, next) => {
     models.Valet.find()
-      .then((valets)=> res.send(valets)).catch(next);
+      .then((valets) => res.send(valets))
+      .catch(next);
+  },
+  getOne: (req, res, next) => {
+    models.Valet.findById(id)
+      .then((valet) => res.send(valet))
+      .catch(next);
   },
 
-  getUser:(req,res,next) =>{
+  getUser: (req, res, next) => {
     const id = req.body.id;
-    console.log('AM I ALIVE', id)
-    models.Valet.find({creatorId:id})
-        .then((locations) => {
-          console.log(locations)
-          res.send(locations)})
-        .catch(next);
-},
+    models.Valet.find({ creatorId: id })
+      .then((locations) => {
+        console.log(locations);
+        res.send(locations);
+      })
+      .catch(next);
+  },
+  getLocations: (req, res, next) => {
+    console.log(req.body);
+  },
 
   post: (req, res, next) => {
-    console.log(req.cookies)
+    console.log(req.cookies);
     const valet = req.body;
     new Valet(valet)
       .save()
@@ -29,24 +38,21 @@ module.exports = {
       .catch(next);
   },
   addToLocation: (req, res, next) => {
-    
-    models.Valet.find({name:req.body.valetName}).
-    then((valets)=>{
-      models.Location.find({_id:req.body.locationId})
-      .then((locations)=>{
-        valets[0].locations.push(locations[0]._id);
-        locations[0].valets.push(valets[0]._id);
+    models.Valet.find({ name: req.body.valetName }).then((valets) => {
+      models.Location.find({ _id: req.body.locationId }).then((locations) => {
+        console.log(locations[0],valets[0])
+        valets[0].locations.push(locations[0]);
+        locations[0].valets.push(valets[0]);
         locations[0].save();
         valets[0].save();
       });
-        
     });
   },
-  
+
   delete: (req, res, next) => {
     const id = req.params.id;
-    models.Valet.deleteOne({_id: id})
-    .then((removedValet)=>res.send(removedValet))
-    .catch(next);
-  }
+    models.Valet.deleteOne({ _id: id })
+      .then((removedValet) => res.send(removedValet))
+      .catch(next);
+  },
 };

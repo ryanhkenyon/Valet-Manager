@@ -43,6 +43,7 @@ function Valets(props) {
         id={valet._id}
         index={index + 1}
         name={valet.name}
+        locations={valet.locations}
         creatorId={valet.creatorId}
       />
     );

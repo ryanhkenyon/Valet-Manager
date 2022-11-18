@@ -7,16 +7,27 @@ const Location = require("../models/Location");
 module.exports = {
   get: (req, res, next) => {
     models.Location.find()
-            .then((location) => res.send(location))
-            .catch(next);
+      .then((location) => res.send(location))
+      .catch(next);
   },
-  getUser:(req,res,next) =>{
+  getUser: (req, res, next) => {
     const id = req.body.id;
-    models.Location.find({creatorId:id})
-        .then((locations) => {
-          res.send(locations)})
-        .catch(next);
-},
+    models.Location.find({ creatorId: id })
+      .then((locations) => {
+        res.send(locations);
+      })
+      .catch(next);
+  },
+
+  getValets: (req, res, next) => {
+    models.Location.find({_id:req.body.locationId})
+    .then((location)=>{
+      console.log(location.valets)
+      let lesse = location.valet.toObject();
+      console.log(lesse)
+      res.send(lesse)
+    });
+  },
 
   post: (req, res, next) => {
     const location = req.body;
@@ -27,25 +38,23 @@ module.exports = {
   },
 
   addToValet: (req, res, next) => {
-    models.Valet.find({_id:req.body.valetId}).
-    then((valets)=>{
-      models.Location.find({location:req.body.locationName})
-      .then((locations)=>{
-        console.log(locations, valets)
-        valets[0].locations.push(locations[0]._id);
-        locations[0].valets.push(valets[0]._id);
-        locations[0].save();
-        valets[0].save();
-      });
-        
+    models.Valet.find({ _id: req.body.valetId }).then((valets) => {
+      models.Location.find({ location: req.body.locationName }).then(
+        (locations) => {
+          console.log(locations[0],valets[0])
+          valets[0].locations.push(locations[0]);
+          locations[0].valets.push(valets[0]);
+          locations[0].save();
+          valets[0].save();
+        }
+      );
     });
   },
 
   delete: (req, res, next) => {
     const id = req.params.id;
-    console.log('yooosoa', id)
-    models.Location.deleteOne({_id: id})
-    .then((removedLocation)=>res.send(removedLocation))
-    .catch(next);
-  }
+    models.Location.deleteOne({ _id: id })
+      .then((removedLocation) => res.send(removedLocation))
+      .catch(next);
+  },
 };
