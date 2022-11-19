@@ -56,7 +56,7 @@ const Register = (props) => {
           type="text"
           value={username}
           name="email"
-          placeholder="Username"
+          placeholder="Minimum 5 characters"
           onChange={(e) => {
             setUsername(e.target.value);
           }}
@@ -68,7 +68,7 @@ const Register = (props) => {
           type="text"
           value={password}
           name="password"
-          placeholder="Password"
+          placeholder="Minimum 5 characters"
           onChange={(e) => {
             //console.log(e.target.value);
             setPassword(e.target.value);
@@ -81,7 +81,7 @@ const Register = (props) => {
           type="text"
           value={rePassword}
           name="rePassword"
-          placeholder="Repeat Password"
+          placeholder="Must match password"
           onChange={(e) => {
             //console.log(e.target.value);
             setRePassword(e.target.value);

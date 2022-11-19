@@ -104,7 +104,6 @@ function Valet(props) {
           {/* {locationState.state.location} */}
         </button>
       </div>
-      <img className="valetProfileImg" src={ryan} alt="valet" />
       <h5 className="black">Minor details here</h5>
       <div id="test">
         <form onSubmit={submitHandler}>
@@ -129,7 +128,6 @@ function Valet(props) {
       <div className="valetLocations">
         {/* TODO: enter locations associated with valet */}
         <div className="locationItem">
-          <img src={bigMease} className="locationImg"></img>
           <div className="locationItemName">
             <h5>Mease Hospital</h5>
             <Link to="/view/location">

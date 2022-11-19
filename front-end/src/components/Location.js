@@ -43,23 +43,6 @@ function Location(props) {
           services.getLocationValets({
             locationId: locationState.state.id
           }).then((valets)=>{
-          console.log('AYYYEEE', valets)
-          console.log(valets)
-          // let array = [];
-          // let i = 0;
-          // for (let valet of locationState.state.valets) {
-          //   services.getOneValet(valet).then((valetObj)=>{
-
-          //     array[i] = valetObj[0].name;
-          //     array[i+1] = valetObj[0]._id;
-          //     i+=2;
-          //   });
-          // }
-          // console.log(array)
-          // console.log(array.reduce((a,v)=>({...a,[v]:v})),{});
-          // console.log([1,2,3,4])
-          // console.log(locationState.state.valets)
-          // console.log(objArray)
         })
       })
       
@@ -93,13 +76,9 @@ function Location(props) {
   let employees = []
   
   for (let valet of valets) {
-    console.log(valet)
     if (valet.locations.length == 0) {
-      console.log('empty')
     } else {
-      console.log(valet.locations)
       for (let location of valet.locations) {
-        console.log(locationState.state.id)
         if (location == locationState.state.id) {
           employees.push(valet)
         }
@@ -107,7 +86,6 @@ function Location(props) {
     }
   }
   
-  console.log('PLEASE', employees)
   let employeeDivs;
   
   if (employees.length == 0) {
@@ -147,7 +125,6 @@ function Location(props) {
           locationId: locationState.state.id,
         })
         .then((data) => {
-          console.log('YASH', data)
           setValet("");
           
         });
@@ -161,7 +138,6 @@ function Location(props) {
           Delete {locationState.state.location}
         </button>
       </div>
-      <img className="locationProfileImg" src={bigMease} />
       <h5 className="black">{locationState.state.address}</h5>
       <div id="test">
         <form onSubmit={submitHandler}>
