@@ -1,13 +1,7 @@
-import bigMease from "../images/bigMease.jpg";
-import { Link, useHref } from "react-router-dom";
-import ryan from "../images/ryan.png";
 import { Navigate, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
 import services from "../services";
-
-
 import ValetDiv from './ValetDiv';
 
 function Location(props) {
@@ -16,7 +10,6 @@ function Location(props) {
 
   const [valet, setValet] = useState("");
   const [valets, setValets] = useState([]);
-  const [valetId, setValetId] = useState('');
 
   function runFetch() {
     services
@@ -39,12 +32,7 @@ function Location(props) {
               setValets(data);
             }
           });
-        }).then((data)=>{
-          services.getLocationValets({
-            locationId: locationState.state.id
-          }).then((valets)=>{
         })
-      })
       
   }
 
@@ -126,7 +114,7 @@ function Location(props) {
         })
         .then((data) => {
           setValet("");
-          
+          navigate("/locations");
         });
     }
     

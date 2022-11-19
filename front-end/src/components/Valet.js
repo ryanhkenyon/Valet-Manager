@@ -61,7 +61,7 @@ function Valet(props) {
       .then((data) => {
         setLocation("");
         // runFetch();
-        
+        navigate("/valets");
       });
   }
 
@@ -104,7 +104,7 @@ function Valet(props) {
           {/* {locationState.state.location} */}
         </button>
       </div>
-      <h5 className="black">Minor details here</h5>
+      {/* <h5 className="black">Minor details here</h5>
       <div id="test">
         <form onSubmit={submitHandler}>
           <h3>Add Valets to this Location</h3>
@@ -121,13 +121,13 @@ function Valet(props) {
           <br />
           <button type="submit">Assign Location To Valet</button>
         </form>
-      </div>
-      <div className="pageTitle">
+      </div> */}
+      {/* <div className="pageTitle">
         <h3>Locations for {locationState.state.name}</h3>
       </div>
       <div className="valetLocations">
         {/* TODO: enter locations associated with valet */}
-        <div className="locationItem">
+        {/* <div className="locationItem">
           <div className="locationItemName">
             <h5>Mease Hospital</h5>
             <Link to="/view/location">
@@ -135,7 +135,7 @@ function Valet(props) {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
