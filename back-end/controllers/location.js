@@ -52,7 +52,7 @@ module.exports = {
           locations[0].save();
           valets[0].save();
         }
-      );
+      ).catch(next)
     });
   },
 

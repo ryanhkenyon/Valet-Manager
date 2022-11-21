@@ -1,25 +1,15 @@
-import { Link } from "react-router-dom";
-import { Navigate, useNavigate } from "react-router-dom";
-import ryan from "../images/ryan.png";
-import bigMease from "../images/bigMease.jpg";
-
-import { useLocation } from "react-router-dom";
-
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-
 import services from "../services";
-
 import LocationDiv from "./LocationDiv";
 
 function Valet(props) {
   const navigate = useNavigate();
-
   const locationState = useLocation();
 
   const [location, setLocation] = useState("");
   const [locations, setLocations] = useState([]);
-  console.log(locationState.state);
-
+  
   function runFetch() {
     services
       .getUserLocation({
@@ -49,10 +39,13 @@ function Valet(props) {
   useEffect(() => {
     runFetch();
   }, []);
+  
+  if (!props.loggedIn) {
+    return <Navigate to="/login" replace={true} />;
+  }
 
   function submitHandler(event) {
     event.preventDefault();
-
     services
       .addLocationToValet({
         locationName: location,
@@ -60,10 +53,20 @@ function Valet(props) {
       })
       .then((data) => {
         setLocation("");
-        // runFetch();
-        navigate("/valets");
+        setLocations('');
       });
-  }
+      navigate("/valets");
+    }
+
+    function deleteValet() {
+      services
+        .deleteValet({
+          id: locationState.state.id,
+        })
+        .then((data) => {
+          navigate("/valets");
+        });
+    }
 
   const locationsArray = locations.map((location, index) => {
     return (
@@ -81,19 +84,40 @@ function Valet(props) {
     );
   });
 
-  function deleteValet() {
-    services
-      .deleteValet({
-        id: locationState.state.id,
-      })
-      .then((data) => {
-        navigate("/valets");
-      });
+  let locationsData = [];
+
+  for (let location of locations) {
+    if(location.valets.length == 0) {
+    } else {
+      for (let valet of location.valets) {
+        if (valet == locationState.state.id) {
+          locationsData.push(location)
+        }
+      }
+    }
   }
 
-  if (!props.loggedIn) {
-    return <Navigate to="/login" replace={true} />;
+  let locationDivs; 
+
+  if (locationsData.length == 0) {
+    locationDivs = <h2 className="black">This valet has no locations!</h2>
+  } else {
+    locationDivs = locationsData.map((location, index) => {
+      return (
+        <LocationDiv
+          key={location._id}
+          id={location._id}
+          index={index+1}
+          location={location.location}
+          address={location.address}
+          valets={location.valets}
+          creatorId={location.creatorId}
+        />
+      )
+    })
   }
+
+
 
   return (
     <div className="Valet">
@@ -101,13 +125,13 @@ function Valet(props) {
         <h1>{locationState.state.name}</h1>
         <button onClick={deleteValet}>
           Delete
-          {/* {locationState.state.location} */}
+          {locationState.state.name}
         </button>
       </div>
-      {/* <h5 className="black">Minor details here</h5>
+      
       <div id="test">
         <form onSubmit={submitHandler}>
-          <h3>Add Valets to this Location</h3>
+          <h3>Add This Valet to a Location!</h3>
           <select
             value={location}
             className="valetSelectionLocation"
@@ -121,21 +145,13 @@ function Valet(props) {
           <br />
           <button type="submit">Assign Location To Valet</button>
         </form>
-      </div> */}
-      {/* <div className="pageTitle">
+      </div>
+      <div className="pageTitle">
         <h3>Locations for {locationState.state.name}</h3>
       </div>
       <div className="valetLocations">
-        {/* TODO: enter locations associated with valet */}
-        {/* <div className="locationItem">
-          <div className="locationItemName">
-            <h5>Mease Hospital</h5>
-            <Link to="/view/location">
-              <h6>Details</h6>
-            </Link>
-          </div>
-        </div>
-      </div> */}
+        {locationDivs}
+      </div>
     </div>
   );
 }

@@ -1,8 +1,7 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import services from "../services";
-import ValetDiv from './ValetDiv';
+import ValetDiv from "./ValetDiv";
 
 function Location(props) {
   const navigate = useNavigate();
@@ -18,7 +17,7 @@ function Location(props) {
       })
       .then((data) => {
         services
-        .getUser({
+          .getUser({
             creatorId: props.userId,
           })
           .then((user) => {
@@ -32,20 +31,41 @@ function Location(props) {
               setValets(data);
             }
           });
-        })
-      
+      });
   }
 
   useEffect(() => {
     runFetch();
-    
   }, []);
 
   if (!props.loggedIn) {
     return <Navigate to="/login" replace={true} />;
   }
 
-  
+  function submitHandler(event) {
+    event.preventDefault();
+    services
+      .addValetToLocation({
+        valetName: valet,
+        locationId: locationState.state.id,
+      })
+      .then((data) => {
+        setValet("");
+        setValets('');
+        navigate("/locations");
+      });
+  }
+
+  function deleteLocation() {
+    services
+      .deleteLocation({
+        id: locationState.state.id,
+      })
+      .then((data) => {
+        navigate("/locations");
+      });
+  }
+
   const valetArray = valets.map((valet, index) => {
     return (
       <option
@@ -60,66 +80,45 @@ function Location(props) {
       </option>
     );
   });
-  
-  let employees = []
-  
+
+  let employees = [];
+
   for (let valet of valets) {
     if (valet.locations.length == 0) {
     } else {
       for (let location of valet.locations) {
         if (location == locationState.state.id) {
-          employees.push(valet)
+          employees.push(valet);
         }
       }
     }
   }
-  
+
   let employeeDivs;
-  
+
   if (employees.length == 0) {
-    employeeDivs = (<h2 className="black">This location has no valets!</h2>)
+    employeeDivs = <h2 className="black">This location has no valets!</h2>;
   } else {
     employeeDivs = employees.map((employee, index) => {
       return (
         <ValetDiv
-        key={employee._id}
-        id={employee._id}
-        index ={index + 1}
-        name={employee.name}
-        locations={employee.locations}
-        creatorId={employee.creatorId}
+          key={employee._id}
+          id={employee._id}
+          index={index + 1}
+          name={employee.name}
+          locations={employee.locations}
+          creatorId={employee.creatorId}
         />
-        )
-      })
-      
-    }
-    
-    
-    function deleteLocation() {
-      services
-      .deleteLocation({
-        id: locationState.state.id,
-      })
-      .then((data) => {
-        navigate("/locations");
-      });
-    }
+      );
+    });
+  }
 
-    function submitHandler(event) {
-      event.preventDefault();
-      services
-        .addValetToLocation({
-          valetName: valet,
-          locationId: locationState.state.id,
-        })
-        .then((data) => {
-          setValet("");
-          navigate("/locations");
-        });
-    }
-    
-    return (
-      <div className="Location">
+  
+
+  
+
+  return (
+    <div className="Location">
       <div className="pageTitle">
         <h1>{locationState.state.location}</h1>
         <button onClick={deleteLocation}>
@@ -141,7 +140,7 @@ function Location(props) {
             {valetArray}
           </select>
           <br />
-          <button type="submit" >Add Valet To Location</button>
+          <button type="submit">Add Valet To Location</button>
         </form>
       </div>
       <div className="pageTitle">
