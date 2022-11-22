@@ -34,8 +34,7 @@
   border-bottom: 10px solid black;
   background-color: olivedrab;
   min-height: 120px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 10px;
 }
 
 .pageTitle2 {
@@ -209,7 +208,7 @@
 
 .locationItem {
   display: inline-block;
-  background-color: olivedrab;
+  background-color: darkolivegreen;
   border: 10px solid black;
   color: black;
   border-radius: 40px;
@@ -287,7 +286,7 @@
 
 .valetItem {
   display: inline-block;
-  background-color: olivedrab;
+  background-color: darkolivegreen;
   border: 10px solid black;
   color: black;
   border-radius: 40px;
@@ -351,4 +350,42 @@
   border: 10px solid black;
   padding: 10px;
   color: black
+}
+
+/* misc */
+
+.deleteButton {
+  padding: 20px;
+  font-size: 20px;
+  margin: 15px;
+  background-color: crimson;
+  border-radius: 10px;
+}
+
+.deleteButton:hover {
+  transform: scale(1.1);
+}
+
+.addButton {
+  padding: 20px;
+  font-size: 20px;
+  margin: 15px;
+  background-color: turquoise;
+  border-radius: 10px;
+}
+
+.addButton:hover {
+  transform: scale(1.1);
+}
+
+.detailsButton {
+  font-size: 20px;
+  width: 100px;
+  margin: 15px;
+  background-color: orange;
+  border-radius: 10px;
+}
+
+.detailsButton:hover {
+  transform: scale(1.1);
 }

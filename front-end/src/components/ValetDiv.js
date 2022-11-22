@@ -16,7 +16,7 @@ function ValetDiv(props) {
           <h5>
             {props.name}
           </h5>
-          <button onClick={()=>{toComponentB()}}>
+          <button className="detailsButton" onClick={()=>{toComponentB()}}>
             <h6>Details</h6>
           </button>
         </div>

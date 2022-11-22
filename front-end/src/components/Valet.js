@@ -97,11 +97,13 @@ function Valet(props) {
     }
   }
 
-  let locationDivs; 
+  let locationDivs, employedMessage; 
 
   if (locationsData.length == 0) {
     locationDivs = <h2 className="black">This valet has no locations!</h2>
+    employedMessage = <h2 className="black">This valet is currently without work.</h2>
   } else {
+    employedMessage = <h2 className="black">This valet is currently assigned to {locationsData.length} locations!</h2>
     locationDivs = locationsData.map((location, index) => {
       return (
         <LocationDiv
@@ -123,12 +125,12 @@ function Valet(props) {
     <div className="Valet">
       <div className="pageTitle">
         <h1>{locationState.state.name}</h1>
-        <button onClick={deleteValet}>
+        <button onClick={deleteValet} className="deleteButton">
           Delete
           {locationState.state.name}
         </button>
       </div>
-      
+      {employedMessage}
       <div id="test">
         <form onSubmit={submitHandler}>
           <h3>Add This Valet to a Location!</h3>
@@ -143,7 +145,7 @@ function Valet(props) {
             {locationsArray}
           </select>
           <br />
-          <button type="submit">Assign Location To Valet</button>
+          <button type="submit" className="addButton">Assign Location To Valet</button>
         </form>
       </div>
       <div className="pageTitle">

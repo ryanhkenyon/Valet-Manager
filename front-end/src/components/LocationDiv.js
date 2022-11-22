@@ -11,7 +11,7 @@ function LocationDiv(props) {
         {/* <img  className="locationImg" alt='location'/> */}
         <div className="locationItemName">
           <h5>{props.location}</h5>
-          <button onClick={()=>{toComponentB()}}>
+          <button className="detailsButton" onClick={()=>{toComponentB()}}>
             <h6>Details</h6>
           </button>
         </div>

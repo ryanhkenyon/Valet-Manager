@@ -94,11 +94,12 @@ function Location(props) {
     }
   }
 
-  let employeeDivs;
+  let employeeDivs, employeeCount;
 
   if (employees.length == 0) {
     employeeDivs = <h2 className="black">This location has no valets!</h2>;
   } else {
+    employeeCount = <h2 className="black">This location currently has {employees.length} valets!</h2>
     employeeDivs = employees.map((employee, index) => {
       return (
         <ValetDiv
@@ -121,11 +122,12 @@ function Location(props) {
     <div className="Location">
       <div className="pageTitle">
         <h1>{locationState.state.location}</h1>
-        <button onClick={deleteLocation}>
-          Delete {locationState.state.location}
+        <button onClick={deleteLocation} className="deleteButton">
+          Delete
         </button>
       </div>
-      <h5 className="black">{locationState.state.address}</h5>
+      <h5 className="black">Located: {locationState.state.address}</h5>
+      {employeeCount}
       <div id="test">
         <form onSubmit={submitHandler}>
           <h3>Add Valets to this Location</h3>
@@ -140,7 +142,7 @@ function Location(props) {
             {valetArray}
           </select>
           <br />
-          <button type="submit">Add Valet To Location</button>
+          <button type="submit" className="addButton">Add Valet To Location</button>
         </form>
       </div>
       <div className="pageTitle">
