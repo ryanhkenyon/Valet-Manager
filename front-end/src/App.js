@@ -27,6 +27,8 @@ import AddValet from "./components/AddValet";
 
 import { useState } from "react";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App(props) {
   const [userId, setUserId] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(["x-auth-token"]);

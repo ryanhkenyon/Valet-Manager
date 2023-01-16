@@ -28,12 +28,9 @@
 }
 
 .pageTitle {
-  color: white;
-  margin-top: 20px;
-  border: solid 10px black;
-  border-bottom: 10px solid black;
-  background-color: olivedrab;
-  min-height: 120px;
+  color: black;
+  max-width: 40vw;
+  margin: 1vh auto 0 auto;
   border-radius: 10px;
 }
 
@@ -46,56 +43,24 @@
   min-height: 120px;
 }
 
-
-
-
-
-
 /* Navigation */
 
-
-.Navigation {
-  border-top: solid black 10px;
-  border-bottom: solid black 10px;
-  width: 100%;
-	/* height: 14vh; */
-	background-color: whitesmoke;
-	color: white;
-	position: absolute;
-	top: 0;
+.nav {
+  background-color: black;
+  color: white;
+  position: relative;
 }
 
-.navTitle {
-  font-size: 50px;
-  border: 10px solid black;
-  border-radius: 5px;
-  padding: 5px;
+.navLinks {
   margin: auto;
-  margin-top: 20px;
-  max-width: 500px;
-  background-color: olivedrab;
-}
-
-.navItem {
-  display: inline;
-	height: auto;
-	cursor: pointer;
-	padding: 0.5%;
-	margin: 0.1%;
-  margin-right: 2%;
-	vertical-align: top;
-  
+  top: 50%;
 }
 
 .navLink {
+  cursor: pointer;
+  
   color: white;
   text-decoration: none;
-  font-size: 20px;
-  border: 3px solid black;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: olivedrab;
-  
 }
 
 /* Footer */
@@ -143,10 +108,10 @@
   border-bottom: solid 10px black;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  color: black
+  color: black;
 }
 
-/* About */ 
+/* About */
 
 .About {
   background-color: whitesmoke;
@@ -193,7 +158,6 @@
 .Locations {
   background-color: whitesmoke;
   width: 100%;
-  margin-top: 178px;
   position: relative;
   min-height: 1000px;
 }
@@ -203,7 +167,7 @@
   width: 700px;
   margin-top: 208px;
   position: relative;
-  min-height: 1000px
+  min-height: 1000px;
 }
 
 .locationItem {
@@ -255,7 +219,6 @@
   margin-top: 20px;
 }
 
-
 /* -------------------------------------------- */
 
 /* Valets */
@@ -273,7 +236,7 @@
   width: 700px;
   margin-top: 208px;
   position: relative;
-  min-height: 1000px
+  min-height: 1000px;
 }
 
 .Valet {
@@ -309,7 +272,7 @@
 .valetImg {
   border: 1px solid black;
   border-radius: 20px;
-  height: 150px
+  height: 150px;
 }
 
 .valetImg:hover {
@@ -329,9 +292,8 @@
   border-radius: 20px;
   background-color: olivedrab;
   width: 500px;
-  margin:auto;
+  margin: auto;
   padding-bottom: 20px;
-  
 }
 
 #locationButton {
@@ -342,14 +304,12 @@
   color: black;
 }
 
-
-
 /* Forms */
 
 .form-control {
   border: 10px solid black;
   padding: 10px;
-  color: black
+  color: black;
 }
 
 /* misc */
