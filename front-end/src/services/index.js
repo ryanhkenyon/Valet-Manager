@@ -29,8 +29,6 @@ const services = {
     getLocationValets,
     getValetLocations,
     getOneValet
+};
 
-
-}
-
-export default services
+export default services;

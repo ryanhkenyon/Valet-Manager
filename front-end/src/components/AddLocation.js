@@ -29,7 +29,7 @@ function AddLocation(props) {
     }
 
     return (
-        <div className="AddLocation">
+        <div className="content">
             <div className="pageTitle">
             <h1>Add a Location!</h1>
             </div>

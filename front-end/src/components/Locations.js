@@ -94,7 +94,7 @@ function Locations(props) {
     );
   } else {
     return (
-      <div className="Locations">
+      <div className="content">
         <div className="pageTitle">
           <h1>Your Locations</h1>
         </div>

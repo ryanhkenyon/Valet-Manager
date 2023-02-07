@@ -30,7 +30,7 @@ const AddValet = (props) => {
         })
     }
     return (
-        <div className="AddValet">
+        <div className="content">
             <div className='pageTitle'>
             <h1>Add a Valet</h1>
             </div>

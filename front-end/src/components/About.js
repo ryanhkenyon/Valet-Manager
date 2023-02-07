@@ -1,10 +1,10 @@
 function About() {
     return (
-        <div className='About'>
+        <div className='content'>
             <div className="pageTitle">
       <h1>About</h1>
       </div>
-      <div className="mainPageBox">
+      <div className="about">
             <p>Valet-Manager is a React-based web application built for managing your Valet business by keeping track of your Locations of business and your Valets as well.
             </p>
             <p>First, register your account in the navbar above. Usernames and passwords must be a minimum of 5 characters.</p>

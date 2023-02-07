@@ -122,7 +122,7 @@ function Valet(props) {
 
 
   return (
-    <div className="Valet">
+    <div className="content">
       <div className="pageTitle">
         <h1>{locationState.state.name}</h1>
         <button onClick={deleteValet} className="deleteButton">

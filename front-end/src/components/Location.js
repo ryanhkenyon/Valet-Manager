@@ -119,7 +119,7 @@ function Location(props) {
   
 
   return (
-    <div className="Location">
+    <div className="content">
       <div className="pageTitle">
         <h1>{locationState.state.location}</h1>
         <button onClick={deleteLocation} className="deleteButton">

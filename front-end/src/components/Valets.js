@@ -92,7 +92,7 @@ function Valets(props) {
   }
 
   return (
-    <div className="Valets">
+    <div className="content">
       <div className="pageTitle">
         <h1>Your Valets</h1>
       </div>

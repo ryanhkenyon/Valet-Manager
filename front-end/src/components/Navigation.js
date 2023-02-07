@@ -5,10 +5,8 @@ function Navigation(props) {
   let loggedIn = props.loggedIn;
   let navItems = [];
   function clickHandler(event) {
-    console.log(window.location);
     props.setLoggedIn(false);
-    props.removeCookie("x-auth-token", { path: "/" });
-    navigate("/");
+    props.removeCookie("x-auth-token");
   }
 
   if (loggedIn) {
@@ -26,12 +24,12 @@ function Navigation(props) {
         <Link to="add/valet" className="navLink">
           Add Valet
         </Link>
-        <Link className="navLink" onClick={clickHandler}>
+        <Link className="navLink" onClick={clickHandler} to="/">
           Logout
         </Link>
         <Link to="/about" className="navLink">
-              About
-            </Link>
+          About
+        </Link>
       </div>
     ];
   } else {
@@ -51,7 +49,9 @@ function Navigation(props) {
   }
   return (
     <div className="container-fluid nav">
+      <Link to="/">
         <h1>Valet Manager</h1>
+      </Link>
           {navItems}
     </div>
   );

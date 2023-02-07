@@ -45,7 +45,7 @@ const Register = (props) => {
 		}
 	}
   return (
-    <div className="Register">
+    <div className="content">
       <div className="pageTitle">
         <h1>Register Account</h1>
       </div>

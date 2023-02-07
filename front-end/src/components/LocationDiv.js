@@ -8,7 +8,6 @@ function LocationDiv(props) {
     
 	return (
 		<div className="locationItem">
-        {/* <img  className="locationImg" alt='location'/> */}
         <div className="locationItemName">
           <h5>{props.location}</h5>
           <button className="detailsButton" onClick={()=>{toComponentB()}}>

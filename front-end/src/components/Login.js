@@ -6,7 +6,6 @@ function Login(props) {
 	
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	console.log('hello',props.loggedIn)
   const navigate = useNavigate();
 	if(props.loggedIn) {
         return <Navigate to='/profile' replace={true}/>
@@ -20,7 +19,6 @@ function Login(props) {
         password,
       })
       .then((data) => {
-        console.log(data);
         props.setCookie(data.cookie.name, data.cookie.token, {
           path: "/",
           maxAge: 60 * 60 * 1000,
@@ -33,7 +31,7 @@ function Login(props) {
   }
 
   return (
-    <div className="Login">
+    <div className="content">
       <div className="pageTitle">
         <h1>Login Page</h1>
       </div>

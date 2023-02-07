@@ -45,7 +45,7 @@ function App(props) {
       />
       <header className="App-header">
         <Routes>
-          <Route path="/" element={<Main loggedIn={loggedIn} />} />
+          <Route path="/" element={<Main loggedIn={loggedIn} userId={userId}/>} />
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register loggedIn={loggedIn} />} />
           <Route

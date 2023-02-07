@@ -10,9 +10,9 @@ function ValetDiv(props) {
 
     
 	return (
-		<div className="valetItem">
+		<div className="locationItem">
         {/* <img src={ryan} className="valetImg" alt="valet"></img> */}
-        <div className="valetItemName">
+        <div className="locationItemName">
           <h5>
             {props.name}
           </h5>

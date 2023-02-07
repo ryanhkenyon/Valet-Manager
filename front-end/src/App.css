@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: whitesmoke;
   display: flex;
@@ -21,26 +10,20 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
+  min-height: 100%;
 }
 
 .pageTitle {
   color: black;
-  max-width: 40vw;
   margin: 1vh auto 0 auto;
-  border-radius: 10px;
 }
 
-.pageTitle2 {
-  color: white;
-  margin-top: 20px;
-  border-top: solid 10px black;
-  border-bottom: solid 10px black;
-  background-color: olivedrab;
-  min-height: 120px;
+/* UNIVERSAL */
+
+.content {
+  height: calc(90vh - 100px);
+  color: black;
+  margin-top: 10vh;
 }
 
 /* Navigation */
@@ -49,76 +32,49 @@
   background-color: black;
   color: white;
   position: relative;
+  height: 50px;
+}
+
+.nav h1 {
+  margin-left: 10px;
+  color: white;
 }
 
 .navLinks {
-  margin: auto;
+  margin: auto 0 auto 0;
   top: 50%;
 }
 
 .navLink {
   cursor: pointer;
-  
+  margin-left: 20px;
   color: white;
   text-decoration: none;
 }
 
 /* Footer */
+
 .footer {
-  border-top: 10px solid black;
+  background-color: black;
   color: white;
-  background-color: olivedrab;
-  padding: 20px;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+  height: 50px;
 }
 
 /* Main */
-.Main {
-  background-color: whitesmoke;
-  width: 900px;
-  margin-top: 225px;
-  position: relative;
-  min-height: 1000px;
-  color: black;
-}
 
-.mainLink {
-  background-color: olivedrab;
-  margin: auto;
-  margin-top: 40px;
-  border: 10px solid black;
-  border-radius: 20px;
-  width: 400px;
-  margin-bottom: 50px;
+
+.mainLink h3 {
+  margin: 2vh auto 2vh auto;
+  background-color: black;
   color: white;
-  text-decoration: none;
-}
-
-.mainLink:hover {
-  transform: scale(1.25);
-}
-
-.mainPageBox {
-  border-left: solid 10px black;
-  border-right: solid 10px black;
-  border-top: solid 1px black;
-  border-bottom: solid 10px black;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  color: black;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 /* About */
 
-.About {
-  background-color: whitesmoke;
-  width: 1000px;
-  margin-top: 200px;
-  position: relative;
-  min-height: 1000px;
+.about {
+  color: black;
 }
 
 /* Register */
@@ -134,11 +90,7 @@
 /* Login */
 
 .Login {
-  background-color: whitesmoke;
-  width: 600px;
-  margin-top: 200px;
-  position: relative;
-  min-height: 1000px;
+  min-height: 90vh;
 }
 
 /* Profile */
@@ -158,8 +110,8 @@
 .Locations {
   background-color: whitesmoke;
   width: 100%;
+  height: 90vh;
   position: relative;
-  min-height: 1000px;
 }
 
 .AddLocation {
@@ -172,26 +124,29 @@
 
 .locationItem {
   display: inline-block;
-  background-color: darkolivegreen;
-  border: 10px solid black;
   color: black;
-  border-radius: 40px;
-  margin: 10px;
   width: 300px;
-  min-height: 350px;
-  max-height: 450px;
-  padding: 15px;
 }
 
 .locationItemName {
-  background-color: whitesmoke;
   border: 1px solid black;
-  border-radius: 40px;
+  border-radius: 20px;
   width: 80%;
   margin: auto;
-  margin-top: 10px;
-  position: relative;
+  padding: 20px;
 }
+
+.detailsButton {
+  padding: 5px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+.detailsButton:hover {
+  transform: scale(1.1);
+}
+
 
 .Location {
   background-color: whitesmoke;
@@ -226,9 +181,8 @@
 .Valets {
   background-color: whitesmoke;
   width: 100%;
-  margin-top: 178px;
   position: relative;
-  min-height: 1000px;
+  height: calc(100vh - 100px)
 }
 
 .AddValet {
@@ -338,14 +292,3 @@
   transform: scale(1.1);
 }
 
-.detailsButton {
-  font-size: 20px;
-  width: 100px;
-  margin: 15px;
-  background-color: orange;
-  border-radius: 10px;
-}
-
-.detailsButton:hover {
-  transform: scale(1.1);
-}
