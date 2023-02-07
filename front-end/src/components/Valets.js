@@ -75,20 +75,16 @@ function Valets(props) {
 
   if (valetsArray.length == 0) {
     return (
-      <div className="Valets">
-      <div className="pageTitle">
+      <div className="content">
         <h1>Your Valets</h1>
+        <h3>You have no valets!</h3>
+        <div className="mainLink">
+        <Link to="/add/valet">
+          <h3>Add one here!</h3>
+        </Link>
         </div>
-        <div className="mainPageBox">
-      <h3>You have no valets!</h3>
-      <div className="mainLink">
-      <Link  to='/add/valet'>
-        <h2>Add one here!</h2>
-      </Link>
       </div>
-      </div>
-      </div>
-    )
+    );
   }
 
   return (

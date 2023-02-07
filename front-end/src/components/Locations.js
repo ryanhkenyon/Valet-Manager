@@ -77,20 +77,15 @@ function Locations(props) {
 
   if (locationsArray.length == 0) {
     return (
-      <div className="Locations">
-      <div className="pageTitle">
+      <div className="content">
         <h1>Your Locations</h1>
+        <h3>You have no locations!</h3>
+        <div className="mainLink">
+        <Link to="/add/location">
+          <h3>Add one here!</h3>
+        </Link>
+        </div>
       </div>
-      <div className="mainPageBox">
-      <h3>You have no locations!</h3>
-      <div className="mainLink">
-      <Link  to='/add/location'>
-        <h2>Add one here!</h2>
-      </Link>
-      </div>
-
-      </div>
-    </div>
     );
   } else {
     return (
@@ -102,7 +97,6 @@ function Locations(props) {
       </div>
     );
   }
-
 }
 
 export default Locations;

@@ -9,7 +9,7 @@ function Valet(props) {
 
   const [location, setLocation] = useState("");
   const [locations, setLocations] = useState([]);
-  
+
   function runFetch() {
     services
       .getUserLocation({
@@ -32,14 +32,12 @@ function Valet(props) {
             }
           });
       });
-
-      
   }
 
   useEffect(() => {
     runFetch();
   }, []);
-  
+
   if (!props.loggedIn) {
     return <Navigate to="/login" replace={true} />;
   }
@@ -53,20 +51,20 @@ function Valet(props) {
       })
       .then((data) => {
         setLocation("");
-        setLocations('');
+        setLocations("");
       });
-      navigate("/valets");
-    }
+    navigate("/valets");
+  }
 
-    function deleteValet() {
-      services
-        .deleteValet({
-          id: locationState.state.id,
-        })
-        .then((data) => {
-          navigate("/valets");
-        });
-    }
+  function deleteValet() {
+    services
+      .deleteValet({
+        id: locationState.state.id,
+      })
+      .then((data) => {
+        navigate("/valets");
+      });
+  }
 
   const locationsArray = locations.map((location, index) => {
     return (
@@ -87,56 +85,53 @@ function Valet(props) {
   let locationsData = [];
 
   for (let location of locations) {
-    if(location.valets.length == 0) {
+    if (location.valets.length == 0) {
     } else {
       for (let valet of location.valets) {
         if (valet == locationState.state.id) {
-          locationsData.push(location)
+          locationsData.push(location);
         }
       }
     }
   }
 
-  let locationDivs, employedMessage; 
+  let locationDivs, employedMessage;
 
   if (locationsData.length == 0) {
-    locationDivs = <h2 className="black">This valet has no locations!</h2>
-    employedMessage = <h2 className="black">This valet is currently without work.</h2>
+    locationDivs = <h2 className="black">This valet has no locations!</h2>;
+    employedMessage = (
+      <h2>This valet is currently without work.</h2>
+    );
   } else {
-    employedMessage = <h2 className="black">This valet is currently assigned to {locationsData.length} locations!</h2>
+    employedMessage = (
+      <h4>
+        This valet is currently assigned to {locationsData.length} locations!
+      </h4>
+    );
     locationDivs = locationsData.map((location, index) => {
       return (
         <LocationDiv
           key={location._id}
           id={location._id}
-          index={index+1}
+          index={index + 1}
           location={location.location}
           address={location.address}
           valets={location.valets}
           creatorId={location.creatorId}
         />
-      )
-    })
+      );
+    });
   }
-
-
 
   return (
     <div className="content">
-      <div className="pageTitle">
-        <h1>{locationState.state.name}</h1>
-        <button onClick={deleteValet} className="deleteButton">
-          Delete
-          {locationState.state.name}
-        </button>
-      </div>
+      <h1>{locationState.state.name}</h1>
       {employedMessage}
-      <div id="test">
+      <div className="test">
         <form onSubmit={submitHandler}>
           <h3>Add This Valet to a Location!</h3>
           <select
             value={location}
-            className="valetSelectionLocation"
             onChange={(e) => {
               setLocation(e.target.value);
             }}
@@ -145,15 +140,16 @@ function Valet(props) {
             {locationsArray}
           </select>
           <br />
-          <button type="submit" className="addButton">Assign Location To Valet</button>
+          <button type="submit" className="addButton">
+            Assign Location To Valet
+          </button>
         </form>
+        <button onClick={deleteValet} className="deleteButton">
+          Delete Valet
+        </button>
       </div>
-      <div className="pageTitle">
-        <h3>Locations for {locationState.state.name}</h3>
-      </div>
-      <div className="valetLocations">
-        {locationDivs}
-      </div>
+      <h3>Locations for {locationState.state.name}</h3>
+      <div className="valetLocations">{locationDivs}</div>
     </div>
   );
 }

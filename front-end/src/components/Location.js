@@ -51,7 +51,7 @@ function Location(props) {
       })
       .then((data) => {
         setValet("");
-        setValets('');
+        setValets("");
         navigate("/locations");
       });
   }
@@ -97,9 +97,13 @@ function Location(props) {
   let employeeDivs, employeeCount;
 
   if (employees.length == 0) {
-    employeeDivs = <h2 className="black">This location has no valets!</h2>;
+    employeeDivs = <h2>This location has no valets!</h2>;
   } else {
-    employeeCount = <h2 className="black">This location currently has {employees.length} valets!</h2>
+    employeeCount = (
+      <h4>
+        This location currently has {employees.length} valets!
+      </h4>
+    );
     employeeDivs = employees.map((employee, index) => {
       return (
         <ValetDiv
@@ -114,25 +118,15 @@ function Location(props) {
     });
   }
 
-  
-
-  
-
   return (
     <div className="content">
-      <div className="pageTitle">
-        <h1>{locationState.state.location}</h1>
-        <button onClick={deleteLocation} className="deleteButton">
-          Delete
-        </button>
-      </div>
-      <h5 className="black">Located: {locationState.state.address}</h5>
+      <h1>{locationState.state.location}</h1>
+      <h6>{locationState.state.address}</h6>
       {employeeCount}
-      <div id="test">
+      <div className="test">
         <form onSubmit={submitHandler}>
           <h3>Add Valets to this Location</h3>
           <select
-            className="valetSelectionLocation"
             value={valet}
             onChange={(e) => {
               setValet(e.target.value);
@@ -142,16 +136,16 @@ function Location(props) {
             {valetArray}
           </select>
           <br />
-          <button type="submit" className="addButton">Add Valet To Location</button>
+          <button type="submit" className="addButton">
+            Add Valet To Location
+          </button>
         </form>
+        <button onClick={deleteLocation} className="deleteButton">
+          Delete
+        </button>
       </div>
-      <div className="pageTitle">
-        <h3>Valets at {locationState.state.location}</h3>
-      </div>
-      <div className="locationValets">
-        {/* TODO: enter valets associated with location */}
-        {employeeDivs}
-      </div>
+      <h3>Valets at {locationState.state.location}</h3>
+      <div className="locationValets">{employeeDivs}</div>
     </div>
   );
 }
