@@ -11,9 +11,7 @@ module.exports = {
       .catch(next);
   },
   getOne: (req, res, next) => {
-    console.log('hello?', req.body)
     let id = Object.keys(req.body)[0]
-    console.log(id)
     models.Valet.find({_id:id})
       .then((valet) => {
         res.send(valet)
@@ -25,7 +23,6 @@ module.exports = {
     const id = req.body.id;
     models.Valet.find({ creatorId: id })
       .then((locations) => {
-        console.log(locations);
         res.send(locations);
       })
       .catch(next);

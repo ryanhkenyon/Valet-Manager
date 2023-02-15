@@ -81,13 +81,11 @@ module.exports = {
 
   login: {
     get: (req, res, next) => {
-      //TODO render login page?
       console.log("hey");
     },
 
     post: (req, res, next) => {
       const { username, password } = req.body;
-      console.log(req)
       models.User.findOne({ username })
         .then((user) => {
           Promise.all([user, user.matchPassword(password)]).then(
@@ -113,7 +111,10 @@ module.exports = {
             }
           );
         })
-        .catch(next);
+        .catch((error)=>{
+          console.log(error)
+          return error
+        });
     },
   },
 

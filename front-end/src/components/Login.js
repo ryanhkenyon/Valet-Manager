@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { Link, Navigate , useNavigate} from "react-router-dom";
 import services from "../services";
-//todd: add in the login service
+
 function Login(props) {
-	
+
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
 	if(props.loggedIn) {
         return <Navigate to='/profile' replace={true}/>
-    }
+  }
+
 
   function submitHandler(event) {
     event.preventDefault();
@@ -19,6 +22,11 @@ function Login(props) {
         password,
       })
       .then((data) => {
+
+        if (Object.keys(data).length !== 2) {
+          setError('Invalid username or password!');
+        }
+
         props.setCookie(data.cookie.name, data.cookie.token, {
           path: "/",
           maxAge: 60 * 60 * 1000,
@@ -32,8 +40,8 @@ function Login(props) {
 
   return (
     <div className="content">
-      <div className="pageTitle">
-        <h1>Login Page</h1>
+      <div>
+        <h1>Login</h1>
       </div>
       <form className="form-control" onSubmit={submitHandler}>
         <div>
@@ -63,6 +71,7 @@ function Login(props) {
         <div>
           <button type="submit">Login</button>
         </div>
+      <label>{error}</label>
       </form>
     </div>
   );

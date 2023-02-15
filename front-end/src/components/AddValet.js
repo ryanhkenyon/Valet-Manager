@@ -5,6 +5,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 const AddValet = (props) => {
 
     const [name, setValet] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     if(!props.loggedIn) {
@@ -25,8 +26,13 @@ const AddValet = (props) => {
             name,
             creatorId: props.userId
         }).then((data)=>{
-            setValet('');
-            return navigate('/valets')
+            console.log(data)
+            if (!data._id) {
+                setError('Valet already exists!')
+            } else {
+                setValet('');
+                return navigate('/valets')
+            }
         })
     }
     return (
@@ -54,7 +60,7 @@ const AddValet = (props) => {
                        <br/> */}
 					<button type="submit">Add Valet</button>
                 </div>
-				
+				<label>{error}</label>
             </form>
         </div>
     )

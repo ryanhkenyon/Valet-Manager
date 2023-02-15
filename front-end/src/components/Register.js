@@ -5,7 +5,9 @@ const Register = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
   if(props.loggedIn) {
     return <Navigate to='/profile' replace={true}/>
   }
@@ -13,18 +15,21 @@ const Register = (props) => {
   function submitHandler(event) {
 		event.preventDefault();
 		let hasError = false;
-		if(username.length == 0) {
-			//error
-			console.log('no username');
+    let error = '';
+		if(username.length < 5) {
+			error += "Username must be 5 characters minimum. ";
 			hasError = true;
 		}
-		if(password.length == 0) {
-			//error
-			console.log('no password');
+		if(password.length < 5) {
+      if (error != '') {
+        error = 'Username and password must be 5 characters minimum. ';
+      } else {
+        error += "Password must be 5 characters minimum. ";
+      }
 			hasError = true;
 		}
     if(password !== rePassword) {
-      console.log('passwords must match!')
+      error += 'Passwords must match. ';
       hasError = true;
     }
 		if(!hasError) {
@@ -33,20 +38,19 @@ const Register = (props) => {
 				password,
 				rePassword
 			}).then((data)=>{
-				console.log(data);
-        if (data.id) {
-        } else {
+        if (data._id) {
           navigate('/login');
-          
+        } else {
+          setError(data.errors[0].msg)
         }
 			}).catch((error) => console.log(error));
 		} else {
-			console.log("There was an error, fix and try again");
+			setError(error);
 		}
 	}
   return (
     <div className="content">
-      <div className="pageTitle">
+      <div>
         <h1>Register Account</h1>
       </div>
       <form className="form-control" onSubmit={submitHandler}>
@@ -90,6 +94,7 @@ const Register = (props) => {
         <div>
 					<button type="submit">Register</button>
 				</div>
+      <label>{error}</label>
       </form>
     </div>
   );

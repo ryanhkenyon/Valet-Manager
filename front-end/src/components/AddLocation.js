@@ -5,6 +5,7 @@ import { Navigate , useNavigate} from 'react-router-dom';
 function AddLocation(props) {
     const [location, setLocation] = useState('');
     const [address, setAddress] = useState('');
+    const [error, setError] = useState('');
     
     const navigate = useNavigate();
     
@@ -21,11 +22,16 @@ function AddLocation(props) {
             address,
             creatorId: props.userId
         }).then((data)=>{
-            setLocation('');
-            setAddress('');
-            // runFetch();
-            return navigate('/locations')
-        });
+            console.log(data)
+            if (!data._id) {
+                setError('Location already exists');
+            } else {
+                setLocation('');
+                setAddress('');
+                // runFetch();
+                return navigate('/locations')
+            }
+        })
     }
 
     return (
@@ -62,7 +68,10 @@ function AddLocation(props) {
                          <input type="file" id="locationButton" 
                        name="image" title="hello" required/>
                        <br/> */}
+                       <div>
 					<button  type="submit">Add Location</button>
+                       </div>
+                       <label>{error}</label>
                 </div>
 				
             </form>

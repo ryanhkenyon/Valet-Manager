@@ -21,6 +21,16 @@
   margin-top: 5vh;
 }
 
+/* FORMS */
+
+.form {
+  width: 300px;
+}
+
+.form-control div button {
+  margin: 15px;
+}
+
 /* Navigation */
 
 .nav {
